@@ -1,0 +1,12 @@
+[core]
+	excludesfile = /home/erwin/.gitignore
+[user]
+	name = Erwin Junge
+[branch]
+	autosetuprebase = always
+[branch "master"]
+	rebase = true
+[branch "staging"]
+	rebase = true
+[branch "production"]
+	rebase = true

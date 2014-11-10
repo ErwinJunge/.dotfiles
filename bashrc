@@ -1,0 +1,101 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+
+# cp reflink (btrfs optimization)
+alias cp='cp --reflink=auto'
+
+#pip download cache
+export PIP_DOWNLOAD_CACHE=$HOME/.pip-download-cache
+
+# virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+
+# virtualenv aliases
+# http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
+alias v='workon'
+alias v.d='deactivate'
+alias v.mk='mkvirtualenv --no-site-packages --python=$(which python2)'
+alias v.mk3='v.mk --python=$(which python3)'
+alias v.mkpypy='v.mk --python=$(which pypy)'
+alias v.mk_withsitepackages='mkvirtualenv'
+alias v.rm='rmvirtualenv'
+alias v.switch='workon'
+alias v.add2virtualenv='add2virtualenv'
+alias v.cdsitepackages='cdsitepackages'
+alias v.cd='cdvirtualenv'
+alias v.lssitepackages='lssitepackages'
+
+# Add $HOME/bin to path
+export PATH=$PATH:$HOME/bin
+
+# Recursive grep
+rg ()
+{
+  fnpart="$1"
+  filename=$HOME/.greps/${fnpart//\//_}
+  if [ -z "$2" ]; then
+    grep -I -r -n --exclude-dir=".git" --exclude-dir=".svn" "$1" . > "$filename"
+  else
+    grep -I -r -n --exclude-dir=".git" --exclude-dir=".svn" --include "*.$2" "$1" . > "$filename"
+  fi
+  less "$filename"
+}
+
+# Cask
+export PATH="$HOME/.cask/bin:$PATH"
+
+# Autoswitch virtualenv
+#
+# Wrapper function that is called if cd is invoked
+# by the current shell
+#
+function cd {
+    # call builtin cd. change to the new directory
+    builtin cd "$@"
+    # call a hook function that can use the new working directory
+    # to decide what to do
+    switch_venv
+}
+
+#
+# Changes the color of the prompt depending
+# on the current working directory
+#
+function switch_venv {
+    if [ -f '.venv' ]; then
+        v $(< .venv)
+    fi
+}
+
+# Check the current directory for existing venv
+switch_venv
+
+export PATH=$HOME/npm/bin:$PATH
+export PATH=$(ruby -rubygems -e "puts Gem.user_dir")/bin:$PATH
+
+function em {
+    venv=${VIRTUAL_ENV##*/}
+    if [[ "x"$venv"x" == "xx" ]]
+    then
+        emacs $@
+    else
+        emacs -T $venv $@
+    fi
+}
+
+# ntfs rsync
+alias ntfs_rsync='rsync --modify-window=3601'
+
+# emacs title
+alias emacs='emacs --name $(basename $(pwd)) -mm'
+
+EDITOR=vim
+alias pacupg='sudo pacman -Syuw && sudo snp pacman -Su'

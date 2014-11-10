@@ -1,0 +1,15 @@
+*.pyc
+*.*~
+.venv
+*.sty
+*.pdf
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+nogit
+.sass-cache
