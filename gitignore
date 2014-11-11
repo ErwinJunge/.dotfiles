@@ -13,3 +13,4 @@
 *.toc
 nogit
 .sass-cache
+node_modules
