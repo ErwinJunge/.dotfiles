@@ -10,3 +10,5 @@
 	rebase = true
 [branch "production"]
 	rebase = true
+[push]
+	default = simple
