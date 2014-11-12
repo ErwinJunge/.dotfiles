@@ -99,3 +99,9 @@ alias emacs='emacs --name $(basename $(pwd)) -mm'
 
 EDITOR=vim
 alias pacupg='sudo pacman -Syuw && sudo snp pacman -Su'
+
+# Fix gnome-terminal not switching to current working directory on new tab
+if [ -e /etc/profile.d/vte.sh ]
+then
+    . /etc/profile.d/vte.sh
+fi
