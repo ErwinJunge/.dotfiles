@@ -20,11 +20,13 @@ source /usr/bin/virtualenvwrapper.sh
 
 # virtualenv aliases
 # http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
+vmk ()
+{
+    mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install elpy rope ipython
+}
 alias v='workon'
 alias v.d='deactivate'
-alias v.mk='mkvirtualenv --no-site-packages --python=$(which python2)'
-alias v.mk3='v.mk --python=$(which python3)'
-alias v.mkpypy='v.mk --python=$(which pypy)'
+alias v.mk='vmk'
 alias v.mk_withsitepackages='mkvirtualenv'
 alias v.rm='rmvirtualenv'
 alias v.switch='workon'
