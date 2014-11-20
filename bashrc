@@ -50,6 +50,17 @@ rg ()
   fi
   less "$filename"
 }
+rgi ()
+{
+  fnpart="$1"
+  filename=$HOME/.greps/${fnpart//\//_}
+  if [ -z "$2" ]; then
+    grep -I -i -r -n --exclude-dir=".git" --exclude-dir=".svn" "$1" . > "$filename"
+  else
+    grep -I -i -r -n --exclude-dir=".git" --exclude-dir=".svn" --include "*.$2" "$1" . > "$filename"
+  fi
+  less "$filename"
+}
 
 # Cask
 export PATH="$HOME/.cask/bin:$PATH"
