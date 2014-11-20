@@ -91,8 +91,8 @@ function switch_venv {
 # Check the current directory for existing venv
 switch_venv
 
-export PATH=$HOME/.npm/bin:$PATH
-export PATH=$(ruby -rubygems -e "puts Gem.user_dir")/bin:$PATH
+export PATH="$HOME/.npm/bin:$PATH"
+export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin:$PATH"
 
 function em {
     venv=${VIRTUAL_ENV##*/}
