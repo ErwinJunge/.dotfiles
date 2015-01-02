@@ -22,7 +22,7 @@ source /usr/bin/virtualenvwrapper.sh
 # http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
 vmk ()
 {
-    mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install elpy rope jedi ipython
+    mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install elpy rope jedi ipython pdbpp
 }
 alias v='workon'
 alias v.d='deactivate'
