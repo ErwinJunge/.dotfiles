@@ -24,9 +24,14 @@ vmk ()
 {
     mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install elpy rope jedi ipython pdbpp
 }
+vmk3 ()
+{
+    mkvirtualenv --no-site-packages $1 && pip install elpy rope_py3k jedi ipython # pdbpp  # FIXME: pdbpp had python3 support in git, re-enable after release
+}
 alias v='workon'
 alias v.d='deactivate'
 alias v.mk='vmk'
+alias v.mk3='vmk3'
 alias v.mk_withsitepackages='mkvirtualenv'
 alias v.rm='rmvirtualenv'
 alias v.switch='workon'
