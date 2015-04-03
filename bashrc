@@ -21,6 +21,9 @@ vmk ()
 {
     mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install elpy rope jedi ipython pdbpp importmagic
 }
+vmks ()
+{
+    mkvirtualenv --system-site-packages --python=$(which python2) $1 && pip install elpy rope jedi ipython pdbpp importmagic
 }
 vmk3 ()
 {
@@ -29,6 +32,7 @@ vmk3 ()
 alias v='workon'
 alias v.d='deactivate'
 alias v.mk='vmk'
+alias v.mks='vmks'
 alias v.mk3='vmk3'
 alias v.mk_withsitepackages='mkvirtualenv'
 alias v.rm='rmvirtualenv'
