@@ -11,9 +11,6 @@ PS1='[\u@\h \W]\$ '
 # cp reflink (btrfs optimization)
 alias cp='cp --reflink=auto'
 
-#pip download cache
-export PIP_DOWNLOAD_CACHE=$HOME/.pip-download-cache
-
 # virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
