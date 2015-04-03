@@ -22,11 +22,12 @@ source /usr/bin/virtualenvwrapper.sh
 # http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
 vmk ()
 {
-    mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install elpy rope jedi ipython pdbpp
+    mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install elpy rope jedi ipython pdbpp importmagic
+}
 }
 vmk3 ()
 {
-    mkvirtualenv --no-site-packages $1 && pip install elpy rope_py3k jedi ipython # pdbpp  # FIXME: pdbpp had python3 support in git, re-enable after release
+    mkvirtualenv --no-site-packages $1 && pip install elpy rope_py3k jedi ipython importmagic # pdbpp  # FIXME: pdbpp had python3 support in git, re-enable after release
 }
 alias v='workon'
 alias v.d='deactivate'
