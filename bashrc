@@ -126,3 +126,9 @@ if [ -e /etc/profile.d/vte.sh ]
 then
     . /etc/profile.d/vte.sh
 fi
+
+# use pkgfile command-not-found hook
+if [ -e /usr/share/doc/pkgfile/command-not-found.bash ]
+then
+    source /usr/share/doc/pkgfile/command-not-found.bash
+fi
