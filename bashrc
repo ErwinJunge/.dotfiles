@@ -19,11 +19,11 @@ source /usr/bin/virtualenvwrapper.sh
 # http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
 vmk ()
 {
-    mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install -U pip && pip install elpy rope jedi pdbpp importmagic
+    mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install -U pip && pip install elpy rope jedi pdbpp importmagic ipython autopep8
 }
 vmks ()
 {
-    mkvirtualenv --system-site-packages --python=$(which python2) $1 && pip install elpy rope jedi pdbpp importmagic
+    mkvirtualenv --system-site-packages --python=$(which python2) $1 && pip install elpy rope jedi pdbpp importmagic ipython autopep8
 }
 vmk3 ()
 {
@@ -41,7 +41,7 @@ alias v.add2virtualenv='add2virtualenv'
 alias v.cdsitepackages='cdsitepackages'
 alias v.cd='cdvirtualenv'
 alias v.lssitepackages='lssitepackages'
-alias v.up='allvirtualenv pip install -U pip && allvirtualenv pip install -U elpy rope jedi pdbpp importmagic'
+alias v.up='allvirtualenv pip install -U pip && allvirtualenv pip install -U elpy rope jedi pdbpp importmagic ipython autopep8'
 
 # Add $HOME/bin to path
 export PATH=$PATH:$HOME/bin
