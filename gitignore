@@ -15,3 +15,4 @@ nogit
 .sass-cache
 node_modules
 .dir-locals.el
+*.mo
