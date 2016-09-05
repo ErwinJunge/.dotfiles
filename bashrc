@@ -44,7 +44,7 @@ alias v.lssitepackages='lssitepackages'
 alias v.up='allvirtualenv pip install -U pip && allvirtualenv pip install -U elpy rope jedi pdbpp importmagic ipython autopep8'
 
 # Add $HOME/bin to path
-export PATH=$PATH:$HOME/bin
+export PATH=$HOME/bin:$PATH
 
 # Recursive grep
 rg ()
