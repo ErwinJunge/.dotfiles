@@ -135,3 +135,4 @@ fi
 
 # Android sdk
 export ANDROID_HOME=/opt/android-sdk
+export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
