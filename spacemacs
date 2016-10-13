@@ -35,6 +35,12 @@ values."
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
+     (erc :variables erc-server-list '(("stamkracht.irc.slack.com"
+                                        :port 6667
+                                        :ssl t
+                                        :nick "erwin"
+                                        :password nil)))
+     emoji
      syntax-checking
      ;; version-control
      )
@@ -275,6 +281,7 @@ you should place your code here."
             (tramp-file-name-localname vec)))
        (concat "/sudo:root@localhost:" (buffer-file-name))))
     (goto-char position)))
+(setq erc-ignore-list '("SK_Dashboard" "Beanstalk" "SLACK" "Nagios" "You have joined channel" "Topic for" "Users on"))
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
