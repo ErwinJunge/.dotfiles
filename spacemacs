@@ -46,7 +46,8 @@ values."
    dotspacemacs-additional-packages '((pytest :location (recipe
                                                          :fetcher github
                                                          :repo "ErwinJunge/pytest-el"))
-                                      visual-regexp-steroids)
+                                      visual-regexp-steroids
+                                      eredis)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(evil-unimpaired)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -278,6 +279,12 @@ you should place your code here."
        (concat "/sudo:root@localhost:" (buffer-file-name))))
     (goto-char position)))
 (setq erc-ignore-list '("SK_Dashboard" "Beanstalk" "SLACK" "Nagios" "You have joined channel" "Topic for" "Users on"))
+(defun next-song ()
+  (interactive)
+  (require 'eredis)
+  (eredis-connect "localhost" "6379")
+  (eredis-publish "commands" "next"))
+(spacemacs/set-leader-keys "on" 'next-song)
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
@@ -285,11 +292,9 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(erc-track-showcount t)
  '(package-selected-packages
    (quote
-    (visual-regexp-steroids visual-regexp yaml-mode pug-mode mmm-mode markdown-toc markdown-mode gh-md spotify helm-spotify multi emoji-cheat-sheet-plus company-emoji erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks slack emojify circe oauth2 websocket ht alert log4e gntp web-mode tagedit slim-mode scss-mode sass-mode less-css-mode jade-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data pony-mode yapfify uuidgen toc-org py-isort org-plus-contrib org-bullets mwim live-py-mode link-hint git-link eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff dumb-jump column-enforce-mode smeargle orgit magit-gitflow helm-gitignore request helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger flycheck-pos-tip flycheck evil-magit magit magit-popup git-commit with-editor company-statistics company-quickhelp pos-tip company-anaconda company auto-yasnippet yasnippet ac-ispell auto-complete pyvenv pytest pyenv-mode py-yapf pip-requirements hy-mode helm-pydoc cython-mode anaconda-mode pythonic f ws-butler window-numbering volatile-highlights vi-tilde-fringe spaceline s powerline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox hydra spinner page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme)))
- '(pony-settings-module "development"))
+    (eredis evil-unimpaired yapfify yaml-mode ws-butler window-numbering which-key web-mode volatile-highlights visual-regexp-steroids vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox orgit org-plus-contrib org-bullets open-junk-file neotree mwim move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emoji-cheat-sheet-plus emmet-mode elisp-slime-nav dumb-jump define-word cython-mode company-web company-statistics company-emoji company-anaconda column-enforce-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
