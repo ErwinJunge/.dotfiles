@@ -278,6 +278,7 @@ you should place your code here."
             (tramp-file-name-localname vec)))
        (concat "/sudo:root@localhost:" (buffer-file-name))))
     (goto-char position)))
+(spacemacs/set-leader-keys "os" 'sudo-edit-current-file)
 (setq erc-ignore-list '("SK_Dashboard" "Beanstalk" "SLACK" "Nagios" "You have joined channel" "Topic for" "Users on"))
 (defun next-song ()
   (interactive)
