@@ -11,10 +11,6 @@ PS1='[\u@\h \W]\$ '
 # cp reflink (btrfs optimization)
 alias cp='cp --reflink=auto'
 
-# virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
-
 # virtualenv aliases
 # http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
 vmk ()
@@ -43,9 +39,6 @@ alias v.cd='cdvirtualenv'
 alias v.lssitepackages='lssitepackages'
 alias v.up='allvirtualenv pip install -U pip && allvirtualenv pip install -U elpy rope jedi pdbpp importmagic ipython autopep8 flake8 autoflake anaconda_mode'
 
-# Add $HOME/bin to path
-export PATH=$HOME/bin:$PATH
-
 # Recursive grep
 rg ()
 {
@@ -69,9 +62,6 @@ rgi ()
   fi
   less "$filename"
 }
-
-# Cask
-export PATH="$HOME/.cask/bin:$PATH"
 
 # Autoswitch virtualenv
 #
@@ -98,9 +88,6 @@ function switch_venv {
 
 # Check the current directory for existing venv
 switch_venv
-
-export PATH="$HOME/.npm/bin:$PATH"
-export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin:$PATH"
 
 function em {
     venv=${VIRTUAL_ENV##*/}
@@ -132,7 +119,3 @@ if [ -e /usr/share/doc/pkgfile/command-not-found.bash ]
 then
     source /usr/share/doc/pkgfile/command-not-found.bash
 fi
-
-# Android sdk
-export ANDROID_HOME=/opt/android-sdk
-export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
