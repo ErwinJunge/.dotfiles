@@ -11,6 +11,9 @@ PS1='[\u@\h \W]\$ '
 # cp reflink (btrfs optimization)
 alias cp='cp --reflink=auto'
 
+# virtualenv
+source /usr/bin/virtualenvwrapper.sh
+
 # virtualenv aliases
 # http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
 vmk ()

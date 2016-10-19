@@ -1,6 +1,5 @@
 # virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
 
 # Add $HOME/bin to path
 export PATH=$HOME/bin:$PATH
