@@ -18,15 +18,15 @@ source /usr/bin/virtualenvwrapper.sh
 # http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
 vmk ()
 {
-    mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install -U pip && pip install elpy rope jedi pdbpp importmagic ipython autopep8 flake8 autoflake anaconda_mode
+    mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install -U pip && pip install ipython pdbpp anaconda_mode autoflake flake8
 }
 vmks ()
 {
-    mkvirtualenv --system-site-packages --python=$(which python2) $1 && pip install elpy rope jedi pdbpp importmagic ipython autopep8
+    mkvirtualenv --system-site-packages --python=$(which python2) $1 && pip install ipython pdbpp anaconda_mode autoflake flake8
 }
 vmk3 ()
 {
-    mkvirtualenv --no-site-packages $1 && pip install elpy rope_py3k jedi ipython importmagic autopep8 flake8 autoflake anaconda_mode# pdbpp  # FIXME: pdbpp had python3 support in git, re-enable after release
+    mkvirtualenv --no-site-packages $1 && pip install install ipython pdbpp anaconda_mode autoflake flake8
 }
 alias v='workon'
 alias v.d='deactivate'
