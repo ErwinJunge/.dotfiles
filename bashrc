@@ -18,15 +18,15 @@ source /usr/bin/virtualenvwrapper.sh
 # http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
 vmk ()
 {
-    mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install -U pip && pip install ipython pdbpp anaconda_mode autoflake flake8
+    mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install -U pip && pip install ipython pdbpp anaconda_mode autoflake flake8 pylint
 }
 vmks ()
 {
-    mkvirtualenv --system-site-packages --python=$(which python2) $1 && pip install ipython pdbpp anaconda_mode autoflake flake8
+    mkvirtualenv --system-site-packages --python=$(which python2) $1 && pip install ipython pdbpp anaconda_mode autoflake flake8 pylint
 }
 vmk3 ()
 {
-    mkvirtualenv --no-site-packages $1 && pip install install ipython pdbpp anaconda_mode autoflake flake8
+    mkvirtualenv --no-site-packages $1 && pip install install ipython pdbpp anaconda_mode autoflake flake8 pylint
 }
 alias v='workon'
 alias v.d='deactivate'
