@@ -26,7 +26,7 @@ vmks ()
 }
 vmk3 ()
 {
-    mkvirtualenv --no-site-packages $1 && pip install elpy rope_py3k jedi ipython importmagic # pdbpp  # FIXME: pdbpp had python3 support in git, re-enable after release
+    mkvirtualenv --no-site-packages $1 && pip install elpy rope_py3k jedi ipython importmagic autopep8 flake8 autoflake anaconda_mode# pdbpp  # FIXME: pdbpp had python3 support in git, re-enable after release
 }
 alias v='workon'
 alias v.d='deactivate'
