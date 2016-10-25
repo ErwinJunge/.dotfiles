@@ -40,7 +40,7 @@ alias v.add2virtualenv='add2virtualenv'
 alias v.cdsitepackages='cdsitepackages'
 alias v.cd='cdvirtualenv'
 alias v.lssitepackages='lssitepackages'
-alias v.up='allvirtualenv pip install -U pip && allvirtualenv pip install -U elpy rope jedi pdbpp importmagic ipython autopep8 flake8 autoflake anaconda_mode'
+alias v.up='allvirtualenv pip install -U pip && allvirtualenv pip install -U ipython pdbpp anaconda_mode autoflake flake8 pylint'
 
 # Recursive grep
 rg ()
