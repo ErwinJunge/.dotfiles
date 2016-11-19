@@ -26,7 +26,7 @@ vmks ()
 }
 vmk3 ()
 {
-    mkvirtualenv --no-site-packages $1 && pip install install ipython pdbpp anaconda_mode autoflake flake8 pylint
+    mkvirtualenv --no-site-packages $1 && pip install ipython pdbpp anaconda_mode autoflake flake8 pylint
 }
 alias v='workon'
 alias v.d='deactivate'
