@@ -262,36 +262,35 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  )
-(put 'project-venv-name 'safe-local-variable #'stringp)
-(add-hook 'python-mode-hook (lambda ()
-                              (hack-local-variables)
-                              (when (boundp 'project-venv-name)
-                                (pyvenv-workon project-venv-name))))
-(setq-default pytest-cmd-flags "-s --lf")
-(setq web-mode-engines-alist '(("django"    . "\\.html\\'")))
-(setq web-mode-markup-indent-offset 2)
-(defun sudo-edit-current-file ()
-  (interactive)
-  (let ((position (point)))
-    (find-alternate-file
-     (if (file-remote-p (buffer-file-name))
-         (let ((vec (tramp-dissect-file-name (buffer-file-name))))
-           (tramp-make-tramp-file-name
-            "sudo"
-            (tramp-file-name-user vec)
-            (tramp-file-name-host vec)
-            (tramp-file-name-localname vec)))
-       (concat "/sudo:root@localhost:" (buffer-file-name))))
-    (goto-char position)))
-(spacemacs/set-leader-keys "os" 'sudo-edit-current-file)
-(setq erc-ignore-list '("SK_Dashboard" "Beanstalk" "SLACK" "Nagios" "You have joined channel" "Topic for" "Users on"))
-(defun next-song ()
-  (interactive)
-  (require 'eredis)
-  (eredis-connect "localhost" "6379")
-  (eredis-publish "commands" "next"))
-(spacemacs/set-leader-keys "on" 'next-song)
+  (put 'project-venv-name 'safe-local-variable #'stringp)
+  (add-hook 'python-mode-hook (lambda ()
+                                (hack-local-variables)
+                                (when (boundp 'project-venv-name)
+                                  (pyvenv-workon project-venv-name))))
+  (setq-default pytest-cmd-flags "-s --lf")
+  (setq web-mode-engines-alist '(("django"    . "\\.html\\'")))
+  (setq web-mode-markup-indent-offset 2)
+  (defun sudo-edit-current-file ()
+    (interactive)
+    (let ((position (point)))
+      (find-alternate-file
+       (if (file-remote-p (buffer-file-name))
+           (let ((vec (tramp-dissect-file-name (buffer-file-name))))
+             (tramp-make-tramp-file-name
+              "sudo"
+              (tramp-file-name-user vec)
+              (tramp-file-name-host vec)
+              (tramp-file-name-localname vec)))
+         (concat "/sudo:root@localhost:" (buffer-file-name))))
+      (goto-char position)))
+  (spacemacs/set-leader-keys "os" 'sudo-edit-current-file)
+  (setq erc-ignore-list '("SK_Dashboard" "Beanstalk" "SLACK" "Nagios" "You have joined channel" "Topic for" "Users on"))
+  (defun next-song ()
+    (interactive)
+    (require 'eredis)
+    (eredis-connect "localhost" "6379")
+    (eredis-publish "commands" "next"))
+  (spacemacs/set-leader-keys "on" 'next-song))
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
