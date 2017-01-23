@@ -270,6 +270,7 @@ you should place your code here."
   (setq-default pytest-cmd-flags "-s --lf")
   (setq web-mode-engines-alist '(("django"    . "\\.html\\'")))
   (setq web-mode-markup-indent-offset 2)
+  (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
   (defun sudo-edit-current-file ()
     (interactive)
     (let ((position (point)))
