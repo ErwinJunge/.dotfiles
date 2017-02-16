@@ -312,7 +312,6 @@ you should place your code here."
     (eredis-connect "localhost" "6379")
     (eredis-publish "commands" "next"))
   (spacemacs/set-leader-keys "on" 'next-song)
-  (require 'auth-password-store)
   (auth-pass-enable)
   (spacemacs/set-leader-keys "op" 'password-store-copy))
 ;; Do not write anything past this comment. This is where Emacs will
