@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     (mu4e :variables mu4e-account-alist t)
      ruby
      csv
      rust
@@ -266,6 +267,30 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (setq mu4e-maildir "~/.mail"
+        mu4e-get-mail-command "mbsync -a"
+        mu4e-update-interval nil
+        mu4e-compose-signature-auto-include nil
+        mu4e-view-show-addresses t
+        mu4e-headers-skip-duplicates t
+        mu4e-change-filenames-when-moving t)
+  (setq mu4e-account-alist
+        '(("erwin@stamkracht.com"
+           ;; Under each account, set the account-specific variables you want.
+           (mu4e-sent-messages-behavior delete)
+           (mu4e-sent-folder "/erwin@stamkracht.com/sent")
+           (mu4e-drafts-folder "/erwin@stamkracht.com/drafts")
+           (mu4e-trash-folder "/erwin@stamkracht.com/trash")
+           (mu4e-refile-folder "/erwin@stamkracht.com/all_mail")
+           (user-mail-address "erwin@stamkracht.com")
+           (user-full-name "Erwin Junge")
+           (message-send-mail-function smtpmail-send-it)
+           (smtpmail-stream-type starttls)
+           (smtpmail-default-smtp-server "smtp.gmail.com")
+           (smtpmail-smtp-server "smtp.gmail.com")
+           (smtpmail-smtp-user "erwin@stamkracht.com")
+           (smtpmail-smtp-service 587))))
+  (mu4e/mail-account-reset)
   (defun get-slack-secret (type)
     (funcall
      (plist-get
@@ -323,7 +348,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (auth-password-store password-store toml-mode slack emojify circe oauth2 websocket ht racer flycheck-rust csv-mode cargo rust-mode alert log4e gntp rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby sql-indent clojure-snippets clj-refactor inflections edn paredit peg cider-eval-sexp-fu cider seq queue clojure-mode restclient ob-http nginx-mode powerline spinner org markdown-mode hydra parent-mode projectile request haml-mode gitignore-mode pos-tip pkg-info epl flx magit-popup git-commit with-editor iedit evil goto-chg undo-tree highlight diminish web-completion-data company bind-map bind-key yasnippet packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build flycheck visual-regexp hide-comnt web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode anzu smartparens helm helm-core magit helm-purpose window-purpose imenu-list eredis evil-unimpaired yapfify yaml-mode ws-butler window-numbering which-key web-mode volatile-highlights visual-regexp-steroids vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox orgit org-plus-contrib org-bullets open-junk-file neotree mwim move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emoji-cheat-sheet-plus emmet-mode elisp-slime-nav dumb-jump define-word cython-mode company-web company-statistics company-emoji company-anaconda column-enforce-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (mu4e-maildirs-extension mu4e-alert auth-password-store password-store toml-mode slack emojify circe oauth2 websocket ht racer flycheck-rust csv-mode cargo rust-mode alert log4e gntp rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby sql-indent clojure-snippets clj-refactor inflections edn paredit peg cider-eval-sexp-fu cider seq queue clojure-mode restclient ob-http nginx-mode powerline spinner org markdown-mode hydra parent-mode projectile request haml-mode gitignore-mode pos-tip pkg-info epl flx magit-popup git-commit with-editor iedit evil goto-chg undo-tree highlight diminish web-completion-data company bind-map bind-key yasnippet packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build flycheck visual-regexp hide-comnt web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode anzu smartparens helm helm-core magit helm-purpose window-purpose imenu-list eredis evil-unimpaired yapfify yaml-mode ws-butler window-numbering which-key web-mode volatile-highlights visual-regexp-steroids vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox orgit org-plus-contrib org-bullets open-junk-file neotree mwim move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emoji-cheat-sheet-plus emmet-mode elisp-slime-nav dumb-jump define-word cython-mode company-web company-statistics company-emoji company-anaconda column-enforce-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -1,0 +1,53 @@
+IMAPAccount stamkracht
+Host imap.gmail.com
+User erwin@stamkracht.com
+PassCmd "pass google.com/erwin@stamkracht.com"
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+PipelineDepth 10
+
+IMAPStore stamkracht-remote
+Account stamkracht
+
+MaildirStore stamkracht-local
+Path ~/.mail/erwin@stamkracht.com/
+Inbox ~/.mail/erwin@stamkracht.com/inbox
+
+Channel stamkracht-inbox
+Master :stamkracht-remote:INBOX
+Slave :stamkracht-local:inbox
+Create Slave
+SyncState *
+
+Channel stamkracht-sent
+Master :stamkracht-remote:"[Gmail]/Sent Mail"
+Slave :stamkracht-local:sent
+Create Slave
+SyncState *
+
+Channel stamkracht-all-mail
+Master :stamkracht-remote:"[Gmail]/All Mail"
+Slave :stamkracht-local:all_mail
+Create Slave
+SyncState *
+
+Channel stamkracht-trash
+Master :stamkracht-remote:"[Gmail]/Trash"
+Slave :stamkracht-local:trash
+Create Slave
+SyncState *
+
+Channel stamkracht-drafts
+Master :stamkracht-remote:"[Gmail]/Drafts"
+Slave :stamkracht-local:drafts
+Create Slave
+SyncState *
+
+# Get all the channels together into a group.
+Group stamkracht
+Channel stamkracht-inbox
+Channel stamkracht-sent
+Channel stamkracht-all-mail
+Channel stamkracht-trash
+Channel stamkracht-drafts
