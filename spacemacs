@@ -269,11 +269,13 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq mu4e-maildir "~/.mail"
         mu4e-get-mail-command "mbsync -a"
-        mu4e-update-interval nil
+        mu4e-update-interval 60
         mu4e-compose-signature-auto-include nil
         mu4e-view-show-addresses t
         mu4e-headers-skip-duplicates t
-        mu4e-change-filenames-when-moving t)
+        mu4e-change-filenames-when-moving t
+        mu4e-hide-index-messages t
+        mu4e-enable-mode-line t)
   (setq mu4e-account-alist
         '(("erwin@stamkracht.com"
            ;; Under each account, set the account-specific variables you want.
@@ -290,7 +292,12 @@ you should place your code here."
            (smtpmail-smtp-server "smtp.gmail.com")
            (smtpmail-smtp-user "erwin@stamkracht.com")
            (smtpmail-smtp-service 587))))
+  (setq mu4e-alert-interesting-mail-query
+        (concat
+         "flag:unread"
+         " AND maildir:/erwin@stamkracht.com/inbox"))
   (mu4e/mail-account-reset)
+  (mu4e t)
   (defun get-slack-secret (type)
     (funcall
      (plist-get
