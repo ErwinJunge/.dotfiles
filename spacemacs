@@ -270,7 +270,6 @@ you should place your code here."
   (setq mu4e-maildir "~/.mail"
         mu4e-get-mail-command "mbsync -a"
         mu4e-update-interval 60
-        mu4e-compose-signature-auto-include nil
         mu4e-view-show-addresses t
         mu4e-headers-skip-duplicates t
         mu4e-change-filenames-when-moving t
@@ -284,6 +283,48 @@ you should place your code here."
            (mu4e-drafts-folder "/erwin@stamkracht.com/drafts")
            (mu4e-trash-folder "/erwin@stamkracht.com/trash")
            (mu4e-refile-folder "/erwin@stamkracht.com/all_mail")
+           (mu4e-compose-signature
+                 "<#part type=text/html><html><body>
+<div class='gmail_signature' data-smartmail='gmail_signature'>
+    <div dir='ltr'>
+        <div class='gmail_signature' data-smartmail='gmail_signature'>
+            <div dir='ltr'>
+                <div>
+                    <div dir='ltr'>
+                        <font size='2'>
+                            <span style='font-family:Roboto,sans-serif;line-height:24px'>
+                                <b>Erwin Junge</b>
+                            </span><br>
+
+                            <font color='#A5A5A5' style='font-family:Roboto,sans-serif;line-height:24px'>
+                                Backend Developer
+                            </font><br>
+
+                            <span style='font-family:Roboto,sans-serif;line-height:24px'>
+                                <a href='mailto:erwin@stamkracht.com' target='_blank'>erwin@stamkracht.com</a>
+                            </span><br>
+                            <br>
+
+                            <span style='font-family:Roboto,sans-serif;line-height:24px'>
+                                020 2108008
+                            </span><br>
+                        </font>
+
+                        <a href='http://stamkracht.com' target='_blank'>
+                            <img alt='www.stamkracht.com' src='http://www.stamkracht.com/media/images/Email_Footer_SKTCC_Erwin.original.png' width='420' height='214'>
+                        </a>
+                        <br>
+
+                        <font size='2' color='#A5A5A5' style='font-family:Roboto,sans-serif;line-height:24px'>
+                            Adres: Oostenburgervoorstraat 72, 1018MR, Amsterdam
+                        </font><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body></html><#/part>" )
            (user-mail-address "erwin@stamkracht.com")
            (user-full-name "Erwin Junge")
            (message-send-mail-function smtpmail-send-it)
