@@ -274,7 +274,8 @@ you should place your code here."
         mu4e-headers-skip-duplicates t
         mu4e-change-filenames-when-moving t
         mu4e-hide-index-messages t
-        mu4e-enable-mode-line t)
+        mu4e-enable-mode-line t
+        mu4e-view-show-images t)
   (setq mu4e-account-alist
         '(("erwin@stamkracht.com"
            ;; Under each account, set the account-specific variables you want.
