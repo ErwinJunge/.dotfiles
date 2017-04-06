@@ -388,7 +388,8 @@ you should place your code here."
     (eredis-publish "commands" "next"))
   (spacemacs/set-leader-keys "on" 'next-song)
   (auth-pass-enable)
-  (spacemacs/set-leader-keys "op" 'password-store-copy))
+  (spacemacs/set-leader-keys "op" 'password-store-copy)
+  (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
