@@ -270,7 +270,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq mu4e-maildir "~/.mail"
         mu4e-get-mail-command "mbsync -a"
-        mu4e-update-interval 60
+        mu4e-update-interval 1800
         mu4e-view-show-addresses t
         mu4e-headers-skip-duplicates t
         mu4e-change-filenames-when-moving t
