@@ -284,7 +284,6 @@ you should place your code here."
            (mu4e-sent-folder "/erwin@stamkracht.com/sent")
            (mu4e-drafts-folder "/erwin@stamkracht.com/drafts")
            (mu4e-trash-folder "/erwin@stamkracht.com/trash")
-           (mu4e-refile-folder "/erwin@stamkracht.com/all_mail")
            (mu4e-compose-signature
                  "<#part type=text/html><html><body>
 <div class='gmail_signature' data-smartmail='gmail_signature'>

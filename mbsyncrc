@@ -26,12 +26,6 @@ Slave :stamkracht-local:sent
 Create Slave
 SyncState *
 
-Channel stamkracht-all-mail
-Master :stamkracht-remote:"[Gmail]/All Mail"
-Slave :stamkracht-local:all_mail
-Create Slave
-SyncState *
-
 Channel stamkracht-trash
 Master :stamkracht-remote:"[Gmail]/Trash"
 Slave :stamkracht-local:trash
@@ -48,6 +42,5 @@ SyncState *
 Group stamkracht
 Channel stamkracht-inbox
 Channel stamkracht-sent
-Channel stamkracht-all-mail
 Channel stamkracht-trash
 Channel stamkracht-drafts
