@@ -341,21 +341,21 @@ you should place your code here."
          " AND maildir:/erwin@stamkracht.com/inbox"))
   (mu4e/mail-account-reset)
   (mu4e t)
-  (defun get-slack-secret (type)
-    (funcall
-     (plist-get
-      (nth 0
-           (auth-source-search :max 1
-                               :host (concat type ".stamkracht.slack.com")
-                               :require '(:secret)))
-      :secret)))
-  (slack-register-team
-   :name "stamkracht"
-   :default t
-   :client-id (get-slack-secret "client-id")
-   :client-secret (get-slack-secret "client-secret")
-   :token (get-slack-secret "token")
-   :subscribed-channels '(general scope))
+  ;; (defun get-slack-secret (type)
+  ;;   (funcall
+  ;;    (plist-get
+  ;;     (nth 0
+  ;;          (auth-source-search :max 1
+  ;;                              :host (concat type ".stamkracht.slack.com")
+  ;;                              :require '(:secret)))
+  ;;     :secret)))
+  ;; (slack-register-team
+  ;;  :name "stamkracht"
+  ;;  :default t
+  ;;  :client-id (get-slack-secret "client-id")
+  ;;  :client-secret (get-slack-secret "client-secret")
+  ;;  :token (get-slack-secret "token")
+  ;;  :subscribed-channels '(general scope))
   (setq alert-default-style 'libnotify)
   (put 'project-venv-name 'safe-local-variable #'stringp)
   (add-hook 'python-mode-hook (lambda ()
