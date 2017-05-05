@@ -277,7 +277,13 @@ you should place your code here."
         mu4e-change-filenames-when-moving t
         mu4e-hide-index-messages t
         mu4e-enable-mode-line t
-        mu4e-view-show-images t)
+        mu4e-view-show-images t
+        mu4e-headers-date-format "%Y-%m-%d %H:%M"
+        mu4e-headers-fields '( (:date          .  25)
+                               (:flags         .   6)
+                               (:from          .  22)
+                               (:subject       .  nil))
+        mu4e-compose-format-flowed t)
   (setq mu4e-account-alist
         '(("erwin@stamkracht.com"
            ;; Under each account, set the account-specific variables you want.
