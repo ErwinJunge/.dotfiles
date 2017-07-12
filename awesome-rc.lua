@@ -1,4 +1,5 @@
 -- Standard awesome library
+local vicious = require("vicious")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
@@ -43,8 +44,8 @@ end
 beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
-editor = os.getenv("EDITOR") or "nano"
+terminal = "terminator"
+editor = os.getenv("EDITOR") or "emacs"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -117,7 +118,49 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock("%Y-%m-%d %H:%M")
+-- Create a CPU usage widget
+cpuwidget = wibox.widget.textbox()
+vicious.register(
+  cpuwidget,
+  vicious.widgets.cpu,
+  function (widget, args)
+    return ("%3d%%"):format(args[1])
+  end,
+  1)
+-- Create a network usage widget
+netwidget = wibox.widget.textbox()
+vicious.register(
+  netwidget,
+  vicious.widgets.net,
+  function (widget, args)
+    return ("%6skB▼ %6skB▲"):format(args["{wlp3s0 down_kb}"],
+                                    args["{wlp3s0 up_kb}"])
+  end,
+  1)
+-- Create a battery usage widget
+batwidget = wibox.widget.textbox()
+vicious.register(
+  batwidget,
+  vicious.widgets.bat,
+  "$3",
+  61,
+  "BAT0")
+-- Create a memory usage widget
+memwidget = wibox.widget.textbox()
+vicious.register(
+  memwidget,
+  vicious.widgets.mem,
+  " $4M $6M",
+  59)
+-- Create a volume widget
+volwidget = wibox.widget.textbox()
+vicious.register(
+  volwidget,
+  vicious.widgets.volume,
+  "$1 $2",
+  1,
+  "Master")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -212,13 +255,22 @@ awful.screen.connect_for_each_screen(function(s)
             s.mytaglist,
             s.mypromptbox,
         },
-        s.mytasklist, -- Middle widget
+        { -- Middle widgets
+          layout = wibox.layout.align.horizontal,
+          expand = "outside",
+          wibox.widget.textbox(""),
+          mytextclock,
+          wibox.widget.textbox("")
+        },
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
-            mytextclock,
-            s.mylayoutbox,
+            batwidget,
+            cpuwidget,
+            memwidget,
+            netwidget,
+            volwidget,
         },
     }
 end)
@@ -330,7 +382,32 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+    -- Brightness
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("brightnessctl s 1%-") end),
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("brightnessctl s +1%") end),
+    -- Volume Keys
+    awful.key({}, "XF86AudioLowerVolume", function ()
+        awful.util.spawn("amixer -q -D pulse sset Master 5%-", false)
+    end),
+    awful.key({}, "XF86AudioRaiseVolume", function ()
+        awful.util.spawn("amixer -q -D pulse sset Master 5%+", false)
+    end),
+    awful.key({}, "XF86AudioMute", function ()
+        awful.util.spawn("amixer -D pulse set Master 1+ toggle", false)
+    end),
+    -- Media Keys
+    awful.key({}, "XF86AudioPlay", function()
+        awful.util.spawn("playerctl play-pause", false)
+    end),
+    awful.key({}, "XF86AudioNext", function()
+        awful.util.spawn("playerctl next", false)
+    end),
+    awful.key({}, "XF86AudioPrev", function()
+        awful.util.spawn("playerctl previous", false)
+    end)
 )
 
 clientkeys = gears.table.join(
@@ -348,8 +425,6 @@ clientkeys = gears.table.join(
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
-              {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
@@ -448,7 +523,8 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+                     maximized = true
      }
     },
 
@@ -480,7 +556,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
