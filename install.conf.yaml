@@ -1,0 +1,23 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- link:
+    ~/.agignore: agignore
+    ~/.bash_profile: bash_profile
+    ~/.bashrc: bashrc
+    ~/.gitconfig: gitconfig
+    ~/.gitignore: gitignore
+    ~/.mbsyncrc: mbsyncrc
+    ~/.npmrc: npmrc
+    ~/.profile: profile
+    ~/.profiles.clj: profiles.clj
+    ~/.pylintrc: pylintrc
+    ~/.pythonrc.py: pythonrc.py
+    ~/.spacemacs: spacemacs
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
