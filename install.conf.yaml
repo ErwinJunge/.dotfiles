@@ -18,6 +18,7 @@
     ~/.pylintrc: pylintrc
     ~/.pythonrc.py: pythonrc.py
     ~/.spacemacs: spacemacs
+    ~/.config/awesome/rc.lua: awesome-rc.lua
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
