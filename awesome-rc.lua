@@ -559,9 +559,17 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = false }
     },
 
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    -- Set Firefox to always map on the tag named "3" on screen 1.
+    { rule = { class = "Terminator" },
+      properties = { screen = 1, tag = "1" } },
+    { rule = { class = "Emacs" },
+      properties = { screen = 1, tag = "2" } },
+    { rule = { class = "Firefox" },
+      properties = { screen = 1, tag = "3" } },
+    { rule = { class = "Spotify" },
+      properties = { screen = 1, tag = "4" } },
+    { rule = { class = "Chromium" },
+      properties = { screen = 1, tag = "5" } },
 }
 -- }}}
 
@@ -632,4 +640,5 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+awful.util.spawn_with_shell("~/.config/awesome/autorun.sh")
 -- }}}

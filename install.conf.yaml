@@ -19,6 +19,7 @@
     ~/.pythonrc.py: pythonrc.py
     ~/.spacemacs: spacemacs
     ~/.config/awesome/rc.lua: awesome-rc.lua
+    ~/.config/awesome/autorun.sh: awesome-autorun.sh
     ~/.config/terminator/config: terminator-config
 
 - shell:
