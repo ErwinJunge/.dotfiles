@@ -19,6 +19,7 @@
     ~/.pythonrc.py: pythonrc.py
     ~/.spacemacs: spacemacs
     ~/.config/awesome/rc.lua: awesome-rc.lua
+    ~/.config/terminator/config: terminator-config
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

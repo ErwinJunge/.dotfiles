@@ -1,0 +1,7 @@
+[global_config]
+  focus = system
+  borderless = True
+
+[profiles]
+  [[default]]
+    show_titlebar = False
