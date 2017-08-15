@@ -193,6 +193,12 @@ bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%-
 bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
 
 #
+# Brightness control
+#
+bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl s +5%
+
+#
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
