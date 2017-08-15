@@ -21,6 +21,7 @@
     ~/.config/awesome/rc.lua: awesome-rc.lua
     ~/.config/awesome/autorun.sh: awesome-autorun.sh
     ~/.config/terminator/config: terminator-config
+    ~/.config/sway/config: sway-config
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
