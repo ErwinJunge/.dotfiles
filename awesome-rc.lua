@@ -161,6 +161,13 @@ vicious.register(
   "$1 $2",
   1,
   "Master")
+-- Create a hdd widget
+hddwidget = wibox.widget.textbox()
+vicious.register(
+  hddwidget,
+  vicious.widgets.dio,
+  " ${sda total_mb}M ",
+  1)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -268,6 +275,7 @@ awful.screen.connect_for_each_screen(function(s)
             batwidget,
             cpuwidget,
             memwidget,
+            hddwidget,
             netwidget,
             volwidget,
         },
