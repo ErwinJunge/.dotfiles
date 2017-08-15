@@ -22,6 +22,11 @@ set $menu dmenu_run
 #
 # Default wallpaper (more resolutions are available in /usr/share/sway/)
 output * bg /home/erwin/Pictures/Wallpapers/current.jpg fill
+
+# Get rid of borders and titles
+hide_edge_borders smart
+new_window none
+
 #
 # Example configuration:
 #
