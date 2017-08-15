@@ -22,6 +22,7 @@
     ~/.config/awesome/autorun.sh: awesome-autorun.sh
     ~/.config/terminator/config: terminator-config
     ~/.config/sway/config: sway-config
+    ~/.config/i3status/config: i3status-config
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
