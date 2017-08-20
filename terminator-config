@@ -5,3 +5,4 @@
 [profiles]
   [[default]]
     show_titlebar = False
+    scrollback_infinite = True
