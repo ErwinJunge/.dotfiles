@@ -77,7 +77,7 @@ bindsym Mod4+Shift+Up move up
 bindsym Mod4+Shift+Right move right
 
 # split in horizontal orientation
-bindsym Mod4+h split h
+bindsym Mod4+g split h
 
 # split in vertical orientation
 bindsym Mod4+v split v
