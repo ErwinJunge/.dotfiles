@@ -270,6 +270,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (require 'helm-bookmark)
   (setq mu4e-maildir "~/.mail"
         mu4e-get-mail-command "mbsync -a"
         mu4e-update-interval 1800
