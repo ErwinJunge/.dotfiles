@@ -166,6 +166,8 @@ mode "resize" {
 
 bindsym Mod4+r mode "resize"
 
+bindsym Mod4+x move workspace to output right
+
 #
 # Volume control
 #
