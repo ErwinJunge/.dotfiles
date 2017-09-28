@@ -62,7 +62,8 @@ values."
                                       eredis
                                       password-store
                                       auth-password-store
-                                      solarized-theme)
+                                      solarized-theme
+                                      real-auto-save)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -271,6 +272,40 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+;; Automatically add, commit, and push when files change.
+
+  (defvar autocommit-dir-set '()
+    "Set of directories for which there is a pending timer job")
+
+  (defun autocommit-schedule-commit (dn)
+    "Schedule an autocommit (and push) if one is not already scheduled for the given dir."
+    (if (null (member dn autocommit-dir-set))
+        (progn
+          (run-with-idle-timer
+           10 nil
+           (lambda (dn)
+             (setq autocommit-dir-set (remove dn autocommit-dir-set))
+             (message (concat "Committing org files in " dn))
+             (shell-command (concat "cd " dn " && git commit -m 'Updated org files.'"))
+             (shell-command (concat "cd " dn " && git push & /usr/bin/true")))
+           dn)
+          (setq autocommit-dir-set (cons dn autocommit-dir-set)))))
+
+  (defun autocommit-after-save-hook ()
+    "After-save-hook to 'git add' the modified file and schedule a commit and push in the idle loop."
+    (let ((fn (buffer-file-name)))
+      (message "git adding %s" fn)
+      (shell-command (concat "git add " fn))
+      (autocommit-schedule-commit (file-name-directory fn))))
+
+  (defun autocommit-setup-save-hook ()
+    "Set up the autocommit save hook for the current file."
+    (interactive)
+    (message "Set up autocommit save hook for this buffer.")
+    (add-hook 'after-save-hook 'autocommit-after-save-hook nil t))
+  (require 'real-auto-save)
+  (add-hook 'org-mode-hook 'real-auto-save-mode)
+  (add-hook 'org-mode-hook 'autocommit-setup-save-hook)
   (setq browse-url-browser-function 'browse-url-generic
         browse-url-generic-program "xdg-open")
   (require 'helm-bookmark)
@@ -416,7 +451,7 @@ you should place your code here."
  '(evil-want-Y-yank-to-eol t)
  '(package-selected-packages
    (quote
-    (org-projectile org-category-capture org-present org-pomodoro org-download htmlize gnuplot lua-mode solarized-theme winum unfill restclient-helm ob-restclient fuzzy company-restclient know-your-http-well spotify helm-spotify multi mu4e-maildirs-extension mu4e-alert auth-password-store password-store toml-mode slack emojify circe oauth2 websocket ht racer flycheck-rust csv-mode cargo rust-mode alert log4e gntp rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby sql-indent clojure-snippets clj-refactor inflections edn paredit peg cider-eval-sexp-fu cider seq queue clojure-mode restclient ob-http nginx-mode powerline spinner org markdown-mode hydra parent-mode projectile request haml-mode gitignore-mode pos-tip pkg-info epl flx magit-popup git-commit with-editor iedit evil goto-chg undo-tree highlight diminish web-completion-data company bind-map bind-key yasnippet packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build flycheck visual-regexp hide-comnt web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode anzu smartparens helm helm-core magit helm-purpose window-purpose imenu-list eredis evil-unimpaired yapfify yaml-mode ws-butler window-numbering which-key web-mode volatile-highlights visual-regexp-steroids vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox orgit org-plus-contrib org-bullets open-junk-file neotree mwim move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emoji-cheat-sheet-plus emmet-mode elisp-slime-nav dumb-jump define-word cython-mode company-web company-statistics company-emoji company-anaconda column-enforce-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (real-auto-save org-projectile org-category-capture org-present org-pomodoro org-download htmlize gnuplot lua-mode solarized-theme winum unfill restclient-helm ob-restclient fuzzy company-restclient know-your-http-well spotify helm-spotify multi mu4e-maildirs-extension mu4e-alert auth-password-store password-store toml-mode slack emojify circe oauth2 websocket ht racer flycheck-rust csv-mode cargo rust-mode alert log4e gntp rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby sql-indent clojure-snippets clj-refactor inflections edn paredit peg cider-eval-sexp-fu cider seq queue clojure-mode restclient ob-http nginx-mode powerline spinner org markdown-mode hydra parent-mode projectile request haml-mode gitignore-mode pos-tip pkg-info epl flx magit-popup git-commit with-editor iedit evil goto-chg undo-tree highlight diminish web-completion-data company bind-map bind-key yasnippet packed anaconda-mode pythonic f dash s avy async auto-complete popup package-build flycheck visual-regexp hide-comnt web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode anzu smartparens helm helm-core magit helm-purpose window-purpose imenu-list eredis evil-unimpaired yapfify yaml-mode ws-butler window-numbering which-key web-mode volatile-highlights visual-regexp-steroids vi-tilde-fringe uuidgen use-package toc-org tagedit spacemacs-theme spaceline smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox orgit org-plus-contrib org-bullets open-junk-file neotree mwim move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint less-css-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emoji-cheat-sheet-plus emmet-mode elisp-slime-nav dumb-jump define-word cython-mode company-web company-statistics company-emoji company-anaconda column-enforce-mode clean-aindent-mode auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
