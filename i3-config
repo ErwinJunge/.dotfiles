@@ -171,3 +171,6 @@ bar {
 
 # Set background
 exec --no-startup-id feh  --bg-fill '/home/erwin/Pictures/Wallpapers/current.jpg'
+
+# Screenshots are useful
+bindsym --release Mod4+s exec --no-startup-id import /tmp/latest-screenshot.png
