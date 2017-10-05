@@ -277,19 +277,24 @@ you should place your code here."
   (defvar autocommit-dir-set '()
     "Set of directories for which there is a pending timer job")
 
+  (defun autocommit-perform-commit (dn)
+    (setq autocommit-dir-set (remove dn autocommit-dir-set))
+    (message (concat "Committing org files in " dn))
+    (shell-command (concat "cd " dn " && git commit -m 'Updated org files.'"))
+    (shell-command (concat "cd " dn " && git push & /usr/bin/true")))
+
   (defun autocommit-schedule-commit (dn)
     "Schedule an autocommit (and push) if one is not already scheduled for the given dir."
     (if (null (member dn autocommit-dir-set))
         (progn
           (run-with-idle-timer
            10 nil
-           (lambda (dn)
-             (setq autocommit-dir-set (remove dn autocommit-dir-set))
-             (message (concat "Committing org files in " dn))
-             (shell-command (concat "cd " dn " && git commit -m 'Updated org files.'"))
-             (shell-command (concat "cd " dn " && git push & /usr/bin/true")))
+           #'autocommit-perform-commit
            dn)
           (setq autocommit-dir-set (cons dn autocommit-dir-set)))))
+
+  (defun autocommit-commit-all ()
+    (loop for dn in autocommit-dir-set do (autocommit-perform-commit dn)))
 
   (defun autocommit-after-save-hook ()
     "After-save-hook to 'git add' the modified file and schedule a commit and push in the idle loop."
@@ -309,11 +314,24 @@ you should place your code here."
   (setq browse-url-browser-function 'browse-url-generic
         browse-url-generic-program "xdg-open")
   (require 'helm-bookmark)
+  (add-hook 'org-clock-in-hook 'set-active-state-hook)
+  (defun set-active-state-hook ()
+    (org-todo "ACTIVE"))
   (with-eval-after-load 'org
     (setq org-agenda-files (list "~/org/work.org"
                                  "~/org/home.org"
-                                 "~/org/okb.org")
-          org-default-notes-file "~/org/inbox.org"))
+                                 "~/org/okb.org"
+                                 "~/org/zeswielen.org"
+                                 "~/org/stebo.works.org")
+          org-default-notes-file "~/org/inbox.org"
+          org-todo-keywords '((sequence "TODO" "ACTIVE" "|" "DONE"))
+          org-todo-keyword-faces '(("TODO" . org-todo)
+                                   ("ACTIVE" . "yellow")
+                                   ("DONE" . org-done))
+          org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")
+                                    (todo . " %i %-12:c")
+                                    (tags . " %i %-12:c")
+                                    (search . " %i %-12:c"))))
   (setq mu4e-maildir "~/.mail"
         mu4e-get-mail-command "mbsync -a"
         mu4e-update-interval 1800
