@@ -16,3 +16,4 @@ nogit
 node_modules
 .dir-locals.el
 *.mo
+.tox
