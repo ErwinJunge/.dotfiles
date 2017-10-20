@@ -311,6 +311,7 @@ you should place your code here."
   (require 'real-auto-save)
   (add-hook 'org-mode-hook 'real-auto-save-mode)
   (add-hook 'org-mode-hook 'autocommit-setup-save-hook)
+  (setq real-auto-save-interval 60)
   (setq browse-url-browser-function 'browse-url-generic
         browse-url-generic-program "xdg-open")
   (require 'helm-bookmark)
