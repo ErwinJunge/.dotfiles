@@ -32,7 +32,9 @@ values."
    dotspacemacs-configuration-layers
    '(
      lua
-     (mu4e :variables mu4e-account-alist t)
+     (mu4e :variables
+           mu4e-account-alist t
+           mu4e-installation-path "/usr/share/emacs/site-lisp/mu4e")
      ruby
      csv
      rust
