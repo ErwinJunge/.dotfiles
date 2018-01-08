@@ -11,7 +11,7 @@ export PATH="$HOME/.cask/bin:$PATH"
 export PATH="$HOME/.npm/bin:$PATH"
 
 # ruby
-export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin:$PATH"
+export PATH="$(ruby -rrubygems -e "puts Gem.user_dir")/bin:$PATH"
 
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
