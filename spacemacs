@@ -32,9 +32,6 @@ values."
    dotspacemacs-configuration-layers
    '(
      lua
-     (mu4e :variables
-           mu4e-account-alist t
-           mu4e-installation-path "/usr/share/emacs/site-lisp/mu4e")
      ruby
      csv
      rust
@@ -401,84 +398,6 @@ you should place your code here."
                                     (todo . " %i %-12:c")
                                     (tags . " %i %-12:c")
                                     (search . " %i %-12:c"))))
-  (setq mu4e-maildir "~/.mail"
-        mu4e-get-mail-command "mbsync -a"
-        mu4e-update-interval 1800
-        mu4e-view-show-addresses t
-        mu4e-headers-skip-duplicates t
-        mu4e-change-filenames-when-moving t
-        mu4e-hide-index-messages t
-        mu4e-enable-mode-line t
-        mu4e-view-show-images t
-        mu4e-headers-date-format "%Y-%m-%d %H:%M"
-        mu4e-headers-fields '( (:date          .  25)
-                               (:flags         .   6)
-                               (:from          .  22)
-                               (:subject       .  nil))
-        mu4e-compose-format-flowed t)
-  (setq mu4e-account-alist
-        '(("erwin@stamkracht.com"
-           ;; Under each account, set the account-specific variables you want.
-           (mu4e-sent-messages-behavior delete)
-           (mu4e-sent-folder "/erwin@stamkracht.com/sent")
-           (mu4e-drafts-folder "/erwin@stamkracht.com/drafts")
-           (mu4e-trash-folder "/erwin@stamkracht.com/trash")
-           (mu4e-compose-signature
-                 "<#part type=text/html><html><body>
-<div class='gmail_signature' data-smartmail='gmail_signature'>
-    <div dir='ltr'>
-        <div class='gmail_signature' data-smartmail='gmail_signature'>
-            <div dir='ltr'>
-                <div>
-                    <div dir='ltr'>
-                        <font size='2'>
-                            <span style='font-family:Roboto,sans-serif;line-height:24px'>
-                                <b>Erwin Junge</b>
-                            </span><br>
-
-                            <font color='#A5A5A5' style='font-family:Roboto,sans-serif;line-height:24px'>
-                                Backend Developer
-                            </font><br>
-
-                            <span style='font-family:Roboto,sans-serif;line-height:24px'>
-                                <a href='mailto:erwin@stamkracht.com' target='_blank'>erwin@stamkracht.com</a>
-                            </span><br>
-                            <br>
-
-                            <span style='font-family:Roboto,sans-serif;line-height:24px'>
-                                020 2108008
-                            </span><br>
-                        </font>
-
-                        <a href='http://stamkracht.com' target='_blank'>
-                            <img alt='www.stamkracht.com' src='http://www.stamkracht.com/media/images/Email_Footer_SKTCC_Erwin.original.png' width='420' height='214'>
-                        </a>
-                        <br>
-
-                        <font size='2' color='#A5A5A5' style='font-family:Roboto,sans-serif;line-height:24px'>
-                            Adres: Oostenburgervoorstraat 72, 1018MR, Amsterdam
-                        </font><br>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</body></html><#/part>" )
-           (user-mail-address "erwin@stamkracht.com")
-           (user-full-name "Erwin Junge")
-           (message-send-mail-function smtpmail-send-it)
-           (smtpmail-stream-type starttls)
-           (smtpmail-default-smtp-server "smtp.gmail.com")
-           (smtpmail-smtp-server "smtp.gmail.com")
-           (smtpmail-smtp-user "erwin@stamkracht.com")
-           (smtpmail-smtp-service 587))))
-  (setq mu4e-alert-interesting-mail-query
-        (concat
-         "flag:unread"
-         " AND maildir:/erwin@stamkracht.com/inbox"))
-  (mu4e/mail-account-reset)
-  (mu4e t)
   ;; (defun get-slack-secret (type)
   ;;   (funcall
   ;;    (plist-get
