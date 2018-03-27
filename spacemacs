@@ -52,15 +52,9 @@ values."
      (python :variables python-test-runner 'pytest)
      git
      html
-     (erc :variables erc-server-list '(("stamkracht.irc.slack.com"
-                                        :port 6667
-                                        :ssl t
-                                        :nick "erwin"
-                                        :password nil)))
      yaml
      markdown
      syntax-checking
-     slack
      spotify
      org
      )
@@ -399,21 +393,6 @@ you should place your code here."
                                     (todo . " %i %-12:c")
                                     (tags . " %i %-12:c")
                                     (search . " %i %-12:c"))))
-  ;; (defun get-slack-secret (type)
-  ;;   (funcall
-  ;;    (plist-get
-  ;;     (nth 0
-  ;;          (auth-source-search :max 1
-  ;;                              :host (concat type ".stamkracht.slack.com")
-  ;;                              :require '(:secret)))
-  ;;     :secret)))
-  ;; (slack-register-team
-  ;;  :name "stamkracht"
-  ;;  :default t
-  ;;  :client-id (get-slack-secret "client-id")
-  ;;  :client-secret (get-slack-secret "client-secret")
-  ;;  :token (get-slack-secret "token")
-  ;;  :subscribed-channels '(general scope))
   (setq alert-default-style 'libnotify)
   (put 'project-venv-name 'safe-local-variable #'stringp)
   (add-hook 'python-mode-hook (lambda ()
@@ -424,7 +403,6 @@ you should place your code here."
   (setq web-mode-engines-alist '(("django"    . "\\.html\\'")))
   (setq web-mode-markup-indent-offset 2)
   (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
-  (setq erc-ignore-list '("SK_Dashboard" "Beanstalk" "SLACK" "Nagios" "You have joined channel" "Topic for" "Users on"))
   (auth-source-pass-enable)
   (spacemacs/set-leader-keys "op" 'password-store-copy)
   (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
