@@ -1,8 +1,24 @@
 [global_config]
-  focus = system
   borderless = True
-
+  focus = system
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
 [profiles]
   [[default]]
-    show_titlebar = False
+    cursor_color = "#aaaaaa"
     scrollback_infinite = True
+    show_titlebar = False
+  [[light]]
+    background_color = "#ffffff"
+    cursor_color = "#aaaaaa"
+    foreground_color = "#000000"
+    scrollback_infinite = True
+    show_titlebar = False
