@@ -18,15 +18,15 @@ source /usr/bin/virtualenvwrapper.sh
 # http://blog.doughellmann.com/2010/01/virtualenvwrapper-tips-and-tricks.html
 vmk ()
 {
-    mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install -U pip && pip install ipython pdbpp anaconda_mode autoflake flake8 pylint
+    mkvirtualenv --no-site-packages --python=$(which python2) $1 && pip install -U pip && pip install ipython pdbpp anaconda_mode autoflake flake8 flake8-bugbear pylint python-language-server pyls-isort pyls-mypy
 }
 vmks ()
 {
-    mkvirtualenv --system-site-packages --python=$(which python2) $1 && pip install ipython pdbpp anaconda_mode autoflake flake8 pylint
+    mkvirtualenv --system-site-packages --python=$(which python2) $1 && pip install ipython pdbpp anaconda_mode autoflake flake8 flake8-bugbear pylint python-language-server pyls-isort pyls-mypy
 }
 vmk3 ()
 {
-    mkvirtualenv --no-site-packages $1 && pip install ipython pdbpp anaconda_mode autoflake flake8 pylint
+    mkvirtualenv --no-site-packages $1 && pip install ipython pdbpp anaconda_mode autoflake flake8-bugbear flake8 pylint python-language-server pyls-isort pyls-mypy
 }
 alias v='workon'
 alias v.d='deactivate'
@@ -40,7 +40,7 @@ alias v.add2virtualenv='add2virtualenv'
 alias v.cdsitepackages='cdsitepackages'
 alias v.cd='cdvirtualenv'
 alias v.lssitepackages='lssitepackages'
-alias v.up='allvirtualenv pip install -U pip && allvirtualenv pip install -U ipython pdbpp anaconda_mode autoflake flake8 pylint'
+alias v.up='allvirtualenv pip install -U pip && allvirtualenv pip install -U ipython pdbpp anaconda_mode autoflake flake8 flake8-bugbear pylint python-language-server pyls-isort pyls-mypy'
 
 # Recursive grep
 rg ()

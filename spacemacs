@@ -49,7 +49,7 @@ values."
      better-defaults
      helm
      emacs-lisp
-     (python :variables python-test-runner 'pytest)
+     (python :variables python-test-runner 'pytest python-backend 'lsp)
      git
      html
      yaml
