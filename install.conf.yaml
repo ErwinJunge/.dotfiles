@@ -24,6 +24,7 @@
     ~/.config/sway/config: sway-config
     ~/.config/i3/config: i3-config
     ~/.config/i3status/config: i3status-config
+    ~/.i3blocks.conf: i3blocks.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

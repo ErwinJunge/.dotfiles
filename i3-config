@@ -164,7 +164,7 @@ bar {
         background #323232
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
-    status_command i3status
+    status_command i3blocks
     wheel_up_cmd exec amixer -q -D pulse sset Master 5%+
     wheel_down_cmd exec amixer -q -D pulse sset Master 5%-
 }
