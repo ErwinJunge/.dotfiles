@@ -28,11 +28,16 @@ vmk3 ()
 {
     mkvirtualenv --no-site-packages $1 && pip install ipython pdbpp anaconda_mode autoflake flake8-bugbear flake8 pylint python-language-server pyls-isort pyls-mypy
 }
+vmk36 ()
+{
+    mkvirtualenv --no-site-packages --python=$(which python3.6) $1 && pip install ipython pdbpp anaconda_mode autoflake flake8-bugbear flake8 pylint python-language-server pyls-isort pyls-mypy
+}
 alias v='workon'
 alias v.d='deactivate'
 alias v.mk='vmk'
 alias v.mks='vmks'
 alias v.mk3='vmk3'
+alias v.mk36='vmk36'
 alias v.mk_withsitepackages='mkvirtualenv'
 alias v.rm='rmvirtualenv'
 alias v.switch='workon'
