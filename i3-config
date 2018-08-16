@@ -174,3 +174,6 @@ exec --no-startup-id feh  --bg-fill '/home/erwin/Pictures/Wallpapers/current.jpg
 
 # Screenshots are useful
 bindsym --release Mod4+s exec --no-startup-id import /tmp/latest-screenshot.png
+
+# lock screen
+exec xss-lock -- /home/erwin/bin/lock_and_blank.sh
