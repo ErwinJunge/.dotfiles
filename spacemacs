@@ -67,8 +67,6 @@ values."
                                                          :repo "ErwinJunge/pytest-el"))
                                       visual-regexp-steroids
                                       eredis
-                                      password-store
-                                      auth-source-pass
                                       solarized-theme
                                       real-auto-save
                                       yasnippet-snippets
@@ -409,7 +407,6 @@ you should place your code here."
   (setq web-mode-markup-indent-offset 2)
   (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
   (auth-source-pass-enable)
-  (spacemacs/set-leader-keys "op" 'password-store-copy)
   (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
