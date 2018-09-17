@@ -28,6 +28,7 @@
     ~/bin/lock_and_blank.sh: lock_and_blank.sh
     ~/.config/fish/functions/nvmu.fish: fish/functions/nvmu.fish
     ~/.config/fish/functions/fish_prompt.fish: fish/functions/fish_prompt.fish
+    ~/.config/fish/functions/vmk3.fish: fish/functions/vmk3.fish
     ~/.config/fish/config.fish: fish/config.fish
     ~/.config/fish/fishfile: fish/fishfile
 
