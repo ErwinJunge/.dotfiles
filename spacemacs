@@ -547,6 +547,7 @@ you should place your code here."
   (setq-default pytest-cmd-flags "-s --lf")
   (setq web-mode-engines-alist '(("django"    . "\\.html\\'")))
   (setq web-mode-markup-indent-offset 2)
+  (setq lsp-message-project-root-warning t)
   (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
   (auth-source-pass-enable)
   (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
