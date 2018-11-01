@@ -29,6 +29,10 @@
     ~/.config/fish/functions/nvmu.fish: fish/functions/nvmu.fish
     ~/.config/fish/functions/fish_prompt.fish: fish/functions/fish_prompt.fish
     ~/.config/fish/functions/vmk3.fish: fish/functions/vmk3.fish
+    ~/.config/fish/functions/vmk36.fish: fish/functions/vmk36.fish
+    ~/.config/fish/functions/vmk3post.fish: fish/functions/vmk3post.fish
+    ~/.config/fish/functions/vmk2.fish: fish/functions/vmk2.fish
+    ~/.config/fish/functions/vmk2post.fish: fish/functions/vmk2post.fish
     ~/.config/fish/config.fish: fish/config.fish
     ~/.config/fish/fishfile: fish/fishfile
 
