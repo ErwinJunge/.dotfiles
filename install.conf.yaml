@@ -36,6 +36,8 @@
     ~/.config/fish/functions/vup.fish: fish/functions/vup.fish
     ~/.config/fish/config.fish: fish/config.fish
     ~/.config/fish/fishfile: fish/fishfile
+    ~/.offlineimaprc: offlineimaprc
+    ~/.offlineimap.py: offlineimap.py
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

@@ -1,0 +1,24 @@
+[general]
+# List of accounts to be synced, separated by a comma.
+accounts = junge
+pythonfile = ~/.offlineimap.py
+
+[Account junge]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = junge-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = junge-remote
+
+[Repository junge-local]
+# offlineimap supports Maildir, GmailMaildir, and IMAP for local repositories.
+type = Maildir
+# Where should the mail be placed?
+localfolders = ~/mail/junge
+
+[Repository junge-remote]
+# Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+type = IMAP
+remotehost = junge.nl
+remoteuser = erwin@junge.nl
+remotepasseval = get_password("junge.nl/erwin")
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
