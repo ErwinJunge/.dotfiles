@@ -5,9 +5,9 @@ function vup
     for virtualenv_name in (lsvirtualenv)
         echo $virtualenv_name
         workon $virtualenv_name
-        if python --version | grep -q 'Python 3'
+        if python --version 2>&1 | grep -q 'Python 3'
             vmk3post
-        else if python --version | grep -q 'Python 2'
+        else if python --version 2>&1 | grep -q 'Python 2'
             vmk2post
         else
             echo 'unknown python version'
