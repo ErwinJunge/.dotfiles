@@ -26,6 +26,8 @@
     ~/.config/i3status/config: i3status-config
     ~/.i3blocks.conf: i3blocks.conf
     ~/bin/lock_and_blank.sh: bin/lock_and_blank.sh
+    ~/bin/maildir-notmuch-sync: bin/maildir-notmuch-sync
+    ~/.notmuch-config: notmuch-config
     ~/.config/fish/functions/nvmu.fish: fish/functions/nvmu.fish
     ~/.config/fish/functions/fish_prompt.fish: fish/functions/fish_prompt.fish
     ~/.config/fish/functions/vmk3.fish: fish/functions/vmk3.fish

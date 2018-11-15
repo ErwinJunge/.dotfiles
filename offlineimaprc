@@ -8,6 +8,8 @@ pythonfile = ~/.offlineimap.py
 localrepository = junge-local
 # Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
 remoterepository = junge-remote
+presynchook = maildir-notmuch-sync pre "~/mail/junge"
+postsynchook = maildir-notmuch-sync post "~/mail/junge"
 
 [Repository junge-local]
 # offlineimap supports Maildir, GmailMaildir, and IMAP for local repositories.
