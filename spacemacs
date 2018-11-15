@@ -64,7 +64,7 @@ This function should only modify configuration layer settings."
      spotify
      org
      lsp
-     (notmuch :variables notmuch-archive-tags '("+INBOX.Archive" "-INBOX" "-unread"))
+     (notmuch :variables notmuch-archive-tags '("+INBOX.Archive" "-INBOX" "-unread") notmuch-message-deleted-tags '("+INBOX.Junk" "-INBOX" "-unread"))
      )
 
    ;; List of additional packages that will be installed without being
