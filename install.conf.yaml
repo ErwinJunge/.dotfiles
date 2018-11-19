@@ -40,6 +40,7 @@
     ~/.config/fish/fishfile: fish/fishfile
     ~/.offlineimaprc: offlineimaprc
     ~/.offlineimap.py: offlineimap.py
+    ~/.msmtprc: msmtprc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
