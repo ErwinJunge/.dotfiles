@@ -1,6 +1,6 @@
 [general]
 # List of accounts to be synced, separated by a comma.
-accounts = junge
+accounts = junge,stamkracht
 pythonfile = ~/.offlineimap.py
 
 [Account junge]
@@ -24,3 +24,21 @@ remotehost = junge.nl
 remoteuser = erwin@junge.nl
 remotepasseval = get_password("junge.nl/erwin")
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[Account stamkracht]
+localrepository = stamkracht-local
+remoterepository = stamkracht-remote
+synclabels = yes
+presynchook = maildir-notmuch-sync pre "~/mail/stamkracht"
+postsynchook = maildir-notmuch-sync post "~/mail/stamkracht"
+
+[Repository stamkracht-local]
+type = GmailMaildir
+localfolders = ~/mail/stamkracht
+
+[Repository stamkracht-remote]
+type = Gmail
+remoteuser = erwin@stamkracht.com
+remotepasseval = get_password("offlineimap/erwin@stamkracht.com")
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+ssl_version=tls1_2
