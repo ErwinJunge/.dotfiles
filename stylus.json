@@ -206,5 +206,27 @@
 		"name": "Qollap - Remove reputation bar",
 		"originalDigest": "c63604824944dc468ab0feabc476d6374db0038b",
 		"id": 24
+	},
+	{
+		"enabled": true,
+		"updateUrl": "https://userstyles.org/styles/chrome/141316.json",
+		"md5Url": "https://update.userstyles.org/141316.md5",
+		"url": "http://userstyles.org/styles/141316",
+		"originalMd5": "311e96494a6e245ed1d2768b973ba5b9",
+		"installDate": 1550248903761,
+		"sections": [
+			{
+				"urls": [],
+				"urlPrefixes": [],
+				"domains": [
+					"slack.com"
+				],
+				"regexps": [],
+				"code": "@namespace url(http://www.w3.org/1999/xhtml);\n.message_current_status {display: none !important}\r\n  .current_status {display: none !important}\r\n  .ql-placeholder .emoji {display: none !important}\r\n  .ql-placeholder .emoji-outer {display: none !important}\r\n  .c-custom_status .emoji-outer {display: none !important}\r\n  .c-custom_status .emoji {display: none !important}\r\n  .channel_header_member_current_status {display: none !important}\r\n  #team_menu_status_callout {display: none !important}"
+			}
+		],
+		"name": "Slack - Remove status emoji",
+		"originalDigest": "be9bbea5200305e4c82b73653c772de59e182789",
+		"id": 25
 	}
 ]
