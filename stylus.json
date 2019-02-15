@@ -184,5 +184,27 @@
 		"name": "Trello - Dark Matter",
 		"originalDigest": "84fcfa6905fc8e855e30d389a34b8ff35e757022",
 		"id": 23
+	},
+	{
+		"enabled": true,
+		"updateUrl": "https://userstyles.org/styles/chrome/153042.json",
+		"md5Url": "https://update.userstyles.org/153042.md5",
+		"url": "http://userstyles.org/styles/153042",
+		"originalMd5": "5bd5c5b4a52cfbf24dd02611ce314dca",
+		"installDate": 1550248876454,
+		"sections": [
+			{
+				"urls": [],
+				"urlPrefixes": [],
+				"domains": [
+					"platform.co.nl"
+				],
+				"regexps": [],
+				"code": ".c-message--progress {\r\n    display: none;\r\n}"
+			}
+		],
+		"name": "Qollap - Remove reputation bar",
+		"originalDigest": "c63604824944dc468ab0feabc476d6374db0038b",
+		"id": 24
 	}
 ]
