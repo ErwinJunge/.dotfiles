@@ -3,3 +3,4 @@ vocabulary.json
 *.min.css
 styles.css
 *.svg
+migrations
