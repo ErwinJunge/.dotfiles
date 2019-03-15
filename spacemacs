@@ -566,6 +566,7 @@ you should place your code here."
                 '((use-blacken . t)
                   (javascript-backend . tern)
                   (javascript-backend . lsp)))
+  (setq projectile-indexing-method 'native)
   (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
 
 (defun dotspacemacs/emacs-custom-settings ()
