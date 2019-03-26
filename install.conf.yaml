@@ -41,6 +41,7 @@
     ~/.offlineimaprc: offlineimaprc
     ~/.offlineimap.py: offlineimap.py
     ~/.msmtprc: msmtprc
+    ~/.jsbeautifyrc: jsbeautifyrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
