@@ -3,11 +3,6 @@ HostName enbiun.stamkracht.com
 User cc
 ServerAliveInterval 60
 
-Host pi
-HostName 192.168.178.27
-User pi
-ServerAliveInterval 60
-
 Host bymeez
 HostName bymeez.com
 User bymeez
@@ -58,19 +53,32 @@ HostName host3.stamkracht.com
 User cc
 ServerAliveInterval 60
 
+Host junge
+HostName junge.nl
+User erwin
+ServerAliveInterval 60
+
+Host junge2
+ProxyCommand ssh -q junge nc -q0 10.0.0.220 22
+
 Host aacb16
-HostName vps2880.directvps.nl
+HostName 141.105.127.40
 User cc
 ServerAliveInterval 60
 
 Host aacb4
-HostName vps2881.directvps.nl
+HostName 141.105.127.42
 User cc
 ServerAliveInterval 60
 
 Host stamkracht
 HostName 5.159.32.84
 User stamkracht
+ServerAliveInterval 60
+
+Host beeboxdata
+HostName vps155.directvps.nl
+User cc
 ServerAliveInterval 60
 
 Host singapore4
@@ -85,12 +93,11 @@ User tinqwise
 ServerAliveInterval 60
 ProxyCommand ssh -q stamkracht nc -q0 %h 22
 
-Host bla
-HostName localhost
-Port 22000
-User root
+Host singaprod
+HostName 10.253.114.19
+User tinqwise
 ServerAliveInterval 60
-ProxyCommand ssh -q web7 nc -q0 %h 22
+ProxyCommand ssh singapore4 -W %h:%p
 
 Host openwrt
 HostName 10.34.54.1
@@ -122,11 +129,6 @@ ServerAliveInterval 60
 Host dasboard
 HostName api.dasboard.co
 User stamkracht
-ServerAliveInterval 60
-
-Host osmc
-HostName 192.168.1.64
-User osmc
 ServerAliveInterval 60
 
 Host beeboxdata
@@ -172,6 +174,58 @@ HostName test.liberty.tinqwise.nl
 User aalberts
 ServerAliveInterval 60
 
+Host agriplace
+HostName transip-4.agriplace.com
+User emil
+ServerAliveInterval 60
+
+Host webfaction
+HostName emildv.webfactional.com
+User emildv
+ServerAliveInterval 60
+
+Host knab5
+HostName 141.105.127.89
+User cc
+ServerAliveInterval 60
+
+Host desktop
+HostName 192.168.3.51
+User erwin
+ServerAliveInterval 60
+
+Host liberty-acceptatie-root
+HostName 95.170.86.96
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+
+Host liberty-acceptatie
+HostName 95.170.86.96
+User liberty
+ServerAliveInterval 60
+
+Host aalberts-prod
+HostName aalbertsacademy.com
+User aalberts
+ServerAliveInterval 60
+
+Host aalberts-prod-root
+HostName aalbertsacademy.com
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+
+Host debuut-prod
+HostName leren.debuut.nl
+User erwin
+ServerAliveInterval 60
+
+Host tinqwise-shared
+HostName 34.251.229.43
+User erwin
+ServerAliveInterval 60
+
 Host tinqwise-pm1
 HostName 10.3.0.211
 User root
@@ -185,3 +239,172 @@ User root
 IdentityFile ~/.ssh/tqw_master
 ServerAliveInterval 60
 ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-pm3
+HostName 10.3.0.213
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-pm4
+HostName 10.3.0.214
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-01
+HostName 10.3.0.11
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-bamboo
+HostName 10.3.0.14
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-confluence
+HostName 10.3.0.156
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-3cx
+HostName 10.3.0.124
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-web01
+HostName 10.3.0.221
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-ldap01
+HostName 10.3.0.220
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-mgmt
+HostName 10.3.0.229
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-mgmt-sftp
+HostName 10.3.0.229
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-mysql
+HostName 10.3.0.228
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-mysql2
+HostName 10.3.0.227
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-data
+HostName 10.3.0.231
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise10218-data
+HostName 10.3.0.231
+User 10218
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host ooak
+HostName ooak.stamkracht.com
+User root
+ServerAliveInterval 60
+
+Host cdnstorage
+HostName storage1.directvps.nl
+User stamkracht
+IdentityFile ~/.ssh/bigstorage
+ProxyCommand ssh knab5 -W %h:%p
+
+Host tinqwise.nl
+HostName tinqwise.nl
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+
+Host hkm-liu
+HostName 37.97.151.5
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+
+Host tinqwise-shared-data
+HostName ec2-34-251-229-43.eu-west-1.compute.amazonaws.com
+User ec2-user
+IdentityFile ~/.ssh/Tinqwise-shared-keypair.pem
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-shared-ec21
+HostName ec2-63-32-3-112.eu-west-1.compute.amazonaws.com
+User ec2-user
+IdentityFile ~/.ssh/Tinqwise-shared-keypair.pem
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host ikea-fs
+HostName 10.100.32.230
+User ec2-user
+IdentityFile ~/.ssh/Tinqwise-Ikea.pem
+ServerAliveInterval 60
+ProxyCommand ssh tinqwise-pm4 -W %h:%p
+
+Host vbne
+HostName leerjegroen.nl
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+
+Host lvnl2
+HostName cms2.igotoolslvnl.nl
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+
+Host krachtvandata
+HostName krachtvandata.nl
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+
+Host gitlabci
+HostName 95.216.45.42
+User root
+IdentityFile ~/.ssh/sk-hetzner.id_rsa
+ServerAliveInterval 60
+
+Host tinqwise-nl
+HostName 37.97.229.9
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
