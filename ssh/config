@@ -1,0 +1,187 @@
+Host enbiun
+HostName enbiun.stamkracht.com
+User cc
+ServerAliveInterval 60
+
+Host pi
+HostName 192.168.178.27
+User pi
+ServerAliveInterval 60
+
+Host bymeez
+HostName bymeez.com
+User bymeez
+ServerAliveInterval 60
+
+Host bymeez2
+HostName werkpaard.bymeez.com
+User bymeez
+ServerAliveInterval 60
+
+Host bymeez3
+HostName ploeg.bymeez.com
+User bymeez
+ServerAliveInterval 60
+
+Host dev
+HostName backup.stamkracht.com
+User cc
+ServerAliveInterval 60
+
+Host levens
+HostName levenslangengelukkig.nl
+User levens
+ServerAliveInterval 60
+
+Host media
+HostName media.platform.co.nl
+User cc
+ServerAliveInterval 60
+
+Host web6
+HostName web6.platform.co.nl
+User cc
+ServerAliveInterval 60
+
+Host web7
+HostName web7.platform.co.nl
+User cc
+ServerAliveInterval 60
+
+Host openict
+HostName erp.open-ict.nl
+User erwin
+ServerAliveInterval 60
+
+Host host3
+HostName host3.stamkracht.com
+User cc
+ServerAliveInterval 60
+
+Host aacb16
+HostName vps2880.directvps.nl
+User cc
+ServerAliveInterval 60
+
+Host aacb4
+HostName vps2881.directvps.nl
+User cc
+ServerAliveInterval 60
+
+Host stamkracht
+HostName 5.159.32.84
+User stamkracht
+ServerAliveInterval 60
+
+Host singapore4
+HostName 10.250.85.106
+User tinqwise
+ServerAliveInterval 60
+ProxyCommand ssh -q stamkracht nc -q0 %h 22
+
+Host singapore16
+HostName 10.250.85.105
+User tinqwise
+ServerAliveInterval 60
+ProxyCommand ssh -q stamkracht nc -q0 %h 22
+
+Host bla
+HostName localhost
+Port 22000
+User root
+ServerAliveInterval 60
+ProxyCommand ssh -q web7 nc -q0 %h 22
+
+Host openwrt
+HostName 10.34.54.1
+User root
+ServerAliveInterval 60
+ProxyCommand ssh -q stamkracht nc -q0 %h 22
+
+Host scope
+HostName api.scopeinsight.com
+User cc
+ServerAliveInterval 60
+
+Host scope-dw
+HostName api.scopeinsight.com
+Port 2222
+User erwin
+ServerAliveInterval 60
+
+Host webhelp
+HostName 193.172.253.130
+User engageit
+ServerAliveInterval 60
+
+Host brandfighters
+HostName bf.stamkracht.com
+User cc
+ServerAliveInterval 60
+
+Host dasboard
+HostName api.dasboard.co
+User stamkracht
+ServerAliveInterval 60
+
+Host osmc
+HostName 192.168.1.64
+User osmc
+ServerAliveInterval 60
+
+Host beeboxdata
+HostName vps155.directvps.nl
+User cc
+ServerAliveInterval 60
+
+Host new-staging
+HostName sk-test.com
+User cc
+ServerAliveInterval 60
+
+Host junge
+HostName junge.nl
+User erwin
+ServerAliveInterval 60
+
+Host ipa
+HostName ipa.stamkracht.com
+User erwin
+ServerAliveInterval 60
+
+Host bnp_dev
+HostName 192.168.218.100
+User root
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host bnp_qa
+HostName 192.168.215.101
+User root
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host bnp_prod
+HostName 192.168.215.99
+User root
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host liberty-test
+HostName test.liberty.tinqwise.nl
+User aalberts
+ServerAliveInterval 60
+
+Host tinqwise-pm1
+HostName 10.3.0.211
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host tinqwise-pm2
+HostName 10.3.0.212
+User root
+IdentityFile ~/.ssh/tqw_master
+ServerAliveInterval 60
+ProxyCommand ssh stamkracht -W %h:%p
