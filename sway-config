@@ -153,7 +153,7 @@ input "1452:657:bcm5974" {
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    # bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -218,6 +218,9 @@ bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl s +5%
 bindsym XF86KbdBrightnessDown exec brightnessctl -d 'smc::kbd_backlight' s 1%-
 bindsym XF86KbdBrightnessUp exec brightnessctl -d 'smc::kbd_backlight' s +1%
+
+# Screenshots are useful
+bindsym --release Mod4+s exec --no-startup-id grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
 
 #
 # Status Bar:
