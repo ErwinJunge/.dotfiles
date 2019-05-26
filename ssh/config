@@ -34,13 +34,18 @@ User cc
 ServerAliveInterval 60
 
 Host web6
-HostName web6.platform.co.nl
-User cc
+HostName 178.21.113.85
+User erwin
 ServerAliveInterval 60
 
 Host web7
 HostName web7.platform.co.nl
-User cc
+User erwin
+ServerAliveInterval 60
+
+Host web8
+HostName web8.platform.co.nl
+User erwin
 ServerAliveInterval 60
 
 Host openict
