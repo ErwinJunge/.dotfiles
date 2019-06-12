@@ -562,6 +562,7 @@ you should place your code here."
   (setq-default notmuch-search-oldest-first nil)
   (setq-default send-mail-function 'sendmail-send-it)
   (setq-default message-send-mail-function 'message-send-mail-with-sendmail)
+  (setq-default mail-host-address "junge.nl")
 
   (setq-default safe-local-variable-values
                 '((use-blacken . t)
