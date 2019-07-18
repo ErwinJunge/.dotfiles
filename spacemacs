@@ -546,6 +546,7 @@ you should place your code here."
                                 (hack-local-variables)
                                 (when (boundp 'use-blacken)
                                   (blacken-mode))))
+  (remove-hook 'python-mode-hook 'importmagic-mode)
   (setq-default pytest-cmd-flags "-s --lf")
   (setq web-mode-engines-alist '(("django"    . "\\.html\\'")))
   (setq web-mode-markup-indent-offset 2)
