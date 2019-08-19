@@ -222,6 +222,10 @@ bindsym XF86KbdBrightnessUp exec brightnessctl -d 'smc::kbd_backlight' s +1%
 # Screenshots are useful
 bindsym --release Mod4+s exec --no-startup-id grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
 
+set $laptop eDP-1
+bindswitch lid:on output $laptop disable
+bindswitch lid:off output $laptop enable
+
 #
 # Status Bar:
 #
