@@ -128,9 +128,3 @@ then
     source /usr/share/doc/pkgfile/command-not-found.bash
 fi
 
-# nvm
-if [ -e /usr/share/nvm/init-nvm.sh ]
-then
-    source /usr/share/nvm/init-nvm.sh
-    alias nvmu='nvm use --delete-prefix'
-fi
