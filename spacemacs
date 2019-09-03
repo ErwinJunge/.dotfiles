@@ -564,7 +564,9 @@ you should place your code here."
   (setq-default safe-local-variable-values
                 '((use-blacken . t)
                   (javascript-backend . tern)
-                  (javascript-backend . lsp)))
+                  (javascript-backend . lsp)
+                  (cider-shadow-cljs-default-options . "app")
+                  (cider-default-cljs-repl . shadow)))
   (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
 
 (defun dotspacemacs/emacs-custom-settings ()
