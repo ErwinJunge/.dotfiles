@@ -62,7 +62,7 @@ This function should only modify configuration layer settings."
      markdown
      syntax-checking
      spotify
-     org
+     (org :variables org-projectile-file "~/org/projects.org")
      lsp
      dap
      (notmuch :variables notmuch-archive-tags '("+INBOX.Archive" "-INBOX" "-unread") notmuch-message-deleted-tags '("+INBOX.Junk" "-INBOX" "-unread"))
@@ -477,65 +477,61 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 ;; Automatically add, commit, and push when files change.
 
-  (defvar autocommit-dir-set '()
-    "Set of directories for which there is a pending timer job")
+  ;; (defvar autocommit-dir-set '()
+  ;;   "Set of directories for which there is a pending timer job")
 
-  (defun autocommit-perform-commit (dn)
-    (setq autocommit-dir-set (remove dn autocommit-dir-set))
-    (message (concat "Committing org files in " dn))
-    (shell-command (concat "cd " dn " && git commit -m 'Updated org files.'"))
-    (shell-command (concat "cd " dn " && git push & /usr/bin/true")))
+  ;; (defun autocommit-perform-commit (dn)
+  ;;   (setq autocommit-dir-set (remove dn autocommit-dir-set))
+  ;;   (message (concat "Committing org files in " dn))
+  ;;   (shell-command (concat "cd " dn " && git commit -m 'Updated org files.'"))
+  ;;   (shell-command (concat "cd " dn " && git push & /usr/bin/true")))
 
-  (defun autocommit-schedule-commit (dn)
-    "Schedule an autocommit (and push) if one is not already scheduled for the given dir."
-    (if (null (member dn autocommit-dir-set))
-        (progn
-          (run-with-idle-timer
-           10 nil
-           #'autocommit-perform-commit
-           dn)
-          (setq autocommit-dir-set (cons dn autocommit-dir-set)))))
+  ;; (defun autocommit-schedule-commit (dn)
+  ;;   "Schedule an autocommit (and push) if one is not already scheduled for the given dir."
+  ;;   (if (null (member dn autocommit-dir-set))
+  ;;       (progn
+  ;;         (run-with-idle-timer
+  ;;          10 nil
+  ;;          #'autocommit-perform-commit
+  ;;          dn)
+  ;;         (setq autocommit-dir-set (cons dn autocommit-dir-set)))))
 
-  (defun autocommit-commit-all ()
-    (loop for dn in autocommit-dir-set do (autocommit-perform-commit dn)))
+  ;; (defun autocommit-commit-all ()
+  ;;   (loop for dn in autocommit-dir-set do (autocommit-perform-commit dn)))
 
-  (defun autocommit-after-save-hook ()
-    "After-save-hook to 'git add' the modified file and schedule a commit and push in the idle loop."
-    (let ((fn (buffer-file-name)))
-      (message "git adding %s" fn)
-      (shell-command (concat "git add " fn))
-      (autocommit-schedule-commit (file-name-directory fn))))
+  ;; (defun autocommit-after-save-hook ()
+  ;;   "After-save-hook to 'git add' the modified file and schedule a commit and push in the idle loop."
+  ;;   (let ((fn (buffer-file-name)))
+  ;;     (message "git adding %s" fn)
+  ;;     (shell-command (concat "git add " fn))
+  ;;     (autocommit-schedule-commit (file-name-directory fn))))
 
-  (defun autocommit-setup-save-hook ()
-    "Set up the autocommit save hook for the current file."
-    (interactive)
-    (message "Set up autocommit save hook for this buffer.")
-    (add-hook 'after-save-hook 'autocommit-after-save-hook nil t))
-  (require 'real-auto-save)
-  (add-hook 'org-mode-hook 'real-auto-save-mode)
-  (add-hook 'org-mode-hook 'autocommit-setup-save-hook)
-  (setq real-auto-save-interval 60)
+  ;; (defun autocommit-setup-save-hook ()
+  ;;   "Set up the autocommit save hook for the current file."
+  ;;   (interactive)
+  ;;   (message "Set up autocommit save hook for this buffer.")
+  ;;   (add-hook 'after-save-hook 'autocommit-after-save-hook nil t))
+  ;; (require 'real-auto-save)
+  ;; (add-hook 'org-mode-hook 'real-auto-save-mode)
+  ;; (add-hook 'org-mode-hook 'autocommit-setup-save-hook)
+  ;; (setq real-auto-save-interval 60)
   (setq browse-url-browser-function 'browse-url-generic
         browse-url-generic-program "xdg-open")
   (require 'helm-bookmark)
-  (add-hook 'org-clock-in-hook 'set-active-state-hook)
-  (defun set-active-state-hook ()
-    (org-todo "ACTIVE"))
+  ;; (add-hook 'org-clock-in-hook 'set-active-state-hook)
+  ;; (defun set-active-state-hook ()
+  ;;   (org-todo "ACTIVE"))
   (with-eval-after-load 'org
-    (setq org-agenda-files (list "~/org/work.org"
-                                 "~/org/home.org"
-                                 "~/org/okb.org"
-                                 "~/org/zeswielen.org"
-                                 "~/org/stebo.works.org")
-          org-default-notes-file "~/org/inbox.org"
-          org-todo-keywords '((sequence "TODO" "ACTIVE" "|" "DONE"))
+    (setq org-todo-keywords '((sequence "TODO" "ACTIVE" "|" "DONE"))
           org-todo-keyword-faces '(("TODO" . org-todo)
                                    ("ACTIVE" . "yellow")
-                                   ("DONE" . org-done))
-          org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t% s")
-                                    (todo . " %i %-12:c")
-                                    (tags . " %i %-12:c")
-                                    (search . " %i %-12:c"))))
+                                   ("DONE" . org-done))))
+  (with-eval-after-load 'org-agenda
+    (require 'org-projectile)
+    (mapcar '(lambda (file)
+               (when (file-exists-p file)
+                 (push file org-agenda-files)))
+            (org-projectile-todo-files)))
   (setq alert-default-style 'libnotify)
   (put 'project-venv-name 'safe-local-variable #'stringp)
   (add-hook 'python-mode-hook (lambda ()
