@@ -43,6 +43,7 @@
     ~/.msmtprc: msmtprc
     ~/.jsbeautifyrc: jsbeautifyrc
     ~/.ssh/config: ssh/config
+    ~/.config/pycodestyle: pycodestyle
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
