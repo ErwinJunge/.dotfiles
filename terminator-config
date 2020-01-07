@@ -14,15 +14,15 @@
 [profiles]
   [[default]]
     cursor_color = "#aaaaaa"
+    custom_command = /usr/bin/fish
     scrollback_infinite = True
     show_titlebar = False
-    custom_command = /usr/bin/fish
     use_custom_command = True
   [[light]]
     background_color = "#ffffff"
     cursor_color = "#aaaaaa"
+    custom_command = /usr/bin/fish
     foreground_color = "#000000"
     scrollback_infinite = True
     show_titlebar = False
-    custom_command = /usr/bin/fish
     use_custom_command = True
