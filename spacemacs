@@ -64,7 +64,7 @@ This function should only modify configuration layer settings."
      markdown
      syntax-checking
      spotify
-     (org :variables org-projectile-file "~/org/projects.org")
+     (org :variables org-projectile-file "~/org/projects.org" org-enable-sticky-header t org-want-todo-bindings t)
      lsp
      dap
      (notmuch :variables notmuch-archive-tags '("+INBOX.Archive" "-INBOX" "-unread") notmuch-message-deleted-tags '("+INBOX.Junk" "-INBOX" "-unread"))
@@ -527,7 +527,8 @@ you should place your code here."
     (setq org-todo-keywords '((sequence "TODO" "ACTIVE" "|" "DONE"))
           org-todo-keyword-faces '(("TODO" . org-todo)
                                    ("ACTIVE" . "yellow")
-                                   ("DONE" . org-done))))
+                                   ("DONE" . org-done))
+          spaceline-org-clock-p t))
   (with-eval-after-load 'org-agenda
     (require 'org-projectile)
     (mapcar '(lambda (file)
