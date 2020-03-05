@@ -413,3 +413,9 @@ HostName 37.97.229.9
 User root
 IdentityFile ~/.ssh/tqw_master
 ServerAliveInterval 60
+
+Host hkm
+HostName ec2-34-240-226-240.eu-west-1.compute.amazonaws.com
+User docker
+IdentityFile ~/.ssh/hkm.id_rsa
+ServerAliveInterval 60
