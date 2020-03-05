@@ -425,3 +425,23 @@ HostName ec2-34-251-132-138.eu-west-1.compute.amazonaws.com
 User ubuntu
 Port 22
 IdentityFile ~/.ssh/prod-docker-01.pem
+
+Host pvh-hop
+HostName 34.251.231.204
+User ubuntu
+Port 22
+IdentityFile ~/.ssh/pvh.id_rsa
+
+Host pvh0
+HostName 10.30.32.146
+User ubuntu
+Port 22
+IdentityFile ~/.ssh/pvh.id_rsa
+ProxyCommand ssh pvh-hop -W %h:%p
+
+Host pvh1
+HostName 10.30.42.212
+User ubuntu
+Port 22
+IdentityFile ~/.ssh/pvh.id_rsa
+ProxyCommand ssh pvh-hop -W %h:%p
