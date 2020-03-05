@@ -64,7 +64,7 @@ This function should only modify configuration layer settings."
      markdown
      syntax-checking
      spotify
-     (org :variables org-projectile-file "~/org/projects.org" org-enable-sticky-header t org-want-todo-bindings t)
+     (org :variables org-projectile-file "~/org/projects.org" org-want-todo-bindings t)
      lsp
      dap
      (notmuch :variables notmuch-archive-tags '("+INBOX.Archive" "-INBOX" "-unread") notmuch-message-deleted-tags '("+INBOX.Junk" "-INBOX" "-unread"))
