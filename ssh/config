@@ -419,3 +419,9 @@ HostName ec2-34-240-226-240.eu-west-1.compute.amazonaws.com
 User docker
 IdentityFile ~/.ssh/hkm.id_rsa
 ServerAliveInterval 60
+
+Host k8s-hop
+HostName ec2-34-251-132-138.eu-west-1.compute.amazonaws.com
+User ubuntu
+Port 22
+IdentityFile ~/.ssh/prod-docker-01.pem
