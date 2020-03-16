@@ -55,7 +55,7 @@ This function should only modify configuration layer settings."
      better-defaults
      helm
      emacs-lisp
-     (python :variables python-test-runner 'pytest python-backend 'lsp)
+     (python :variables python-test-runner 'pytest python-backend 'anaconda)
      multiple-cursors
      neotree
      git
