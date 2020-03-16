@@ -445,3 +445,8 @@ User ubuntu
 Port 22
 IdentityFile ~/.ssh/pvh.id_rsa
 ProxyCommand ssh pvh-hop -W %h:%p
+
+Host qollapdb0
+HostName 10.0.0.22
+User root
+ProxyCommand ssh ipa -W %h:%p
