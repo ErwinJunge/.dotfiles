@@ -565,7 +565,8 @@ you should place your code here."
                   (javascript-backend . lsp)
                   (cider-shadow-cljs-default-options . "app")
                   (cider-default-cljs-repl . shadow)))
-  (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
+  (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
+  (spacemacs/toggle-camel-case-motion-globally-on))
 
 (defun dotspacemacs/emacs-custom-settings ()
   "Emacs custom settings.
