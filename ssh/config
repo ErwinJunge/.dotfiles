@@ -450,3 +450,27 @@ Host qollapdb0
 HostName 10.0.0.22
 User root
 ProxyCommand ssh ipa -W %h:%p
+
+Host ikea-fs-bastion
+HostName ec2-18-184-157-115.eu-central-1.compute.amazonaws.com
+User ubuntu
+IdentityFile ~/.ssh/qollab-ikea.pem
+ProxyCommand ssh stamkracht -W %h:%p
+
+Host ikea-fs-1
+HostName 10.100.35.80
+User ec2-user
+IdentityFile ~/.ssh/Tinqwise-Ikea.pem
+ProxyCommand ssh ikea-fs-bastion -W %h:%p
+
+Host ikea-fs-2
+HostName 10.100.40.126
+User ec2-user
+IdentityFile ~/.ssh/Tinqwise-Ikea.pem
+ProxyCommand ssh ikea-fs-bastion -W %h:%p
+
+Host ikea-fs-3
+HostName 10.100.46.6
+User ec2-user
+IdentityFile ~/.ssh/Tinqwise-Ikea.pem
+ProxyCommand ssh ikea-fs-bastion -W %h:%p
