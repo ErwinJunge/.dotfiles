@@ -474,3 +474,7 @@ HostName 10.100.46.6
 User ec2-user
 IdentityFile ~/.ssh/Tinqwise-Ikea.pem
 ProxyCommand ssh ikea-fs-bastion -W %h:%p
+
+Host nagios
+HostName nagios.stamkracht.com
+User root
