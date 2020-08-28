@@ -15,8 +15,6 @@
     ~/.npmrc: npmrc
     ~/.profile: profile
     ~/.profiles.clj: profiles.clj
-    ~/.pylintrc: pylintrc
-    ~/.pythonrc.py: pythonrc.py
     ~/.spacemacs: spacemacs
     ~/.config/awesome/rc.lua: awesome-rc.lua
     ~/.config/awesome/autorun.sh: awesome-autorun.sh
