@@ -231,34 +231,6 @@ HostName 34.251.229.43
 User erwin
 ServerAliveInterval 60
 
-Host tinqwise-pm1
-HostName 10.3.0.211
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise-pm2
-HostName 10.3.0.212
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise-pm3
-HostName 10.3.0.213
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise-pm4
-HostName 10.3.0.214
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
 Host tinqwise-01
 HostName 10.3.0.11
 User root
@@ -377,13 +349,6 @@ IdentityFile ~/.ssh/Tinqwise-shared-keypair.pem
 ServerAliveInterval 60
 ProxyCommand ssh stamkracht -W %h:%p
 
-Host ikea-fs
-HostName 10.100.32.230
-User ec2-user
-IdentityFile ~/.ssh/Tinqwise-Ikea.pem
-ServerAliveInterval 60
-ProxyCommand ssh tinqwise-pm4 -W %h:%p
-
 Host vbne
 HostName leerjegroen.nl
 User root
@@ -425,6 +390,7 @@ HostName ec2-34-251-132-138.eu-west-1.compute.amazonaws.com
 User ubuntu
 Port 22
 IdentityFile ~/.ssh/prod-docker-01.pem
+ProxyCommand ssh stamkracht -W %h:%p
 
 Host pvh-hop
 HostName 34.251.231.204
@@ -457,20 +423,8 @@ User ubuntu
 IdentityFile ~/.ssh/qollab-ikea.pem
 ProxyCommand ssh stamkracht -W %h:%p
 
-Host ikea-fs-1
-HostName 10.100.35.80
-User ec2-user
-IdentityFile ~/.ssh/Tinqwise-Ikea.pem
-ProxyCommand ssh ikea-fs-bastion -W %h:%p
-
-Host ikea-fs-2
-HostName 10.100.40.126
-User ec2-user
-IdentityFile ~/.ssh/Tinqwise-Ikea.pem
-ProxyCommand ssh ikea-fs-bastion -W %h:%p
-
-Host ikea-fs-3
-HostName 10.100.46.6
+Host ikea-fs
+HostName 10.100.33.151
 User ec2-user
 IdentityFile ~/.ssh/Tinqwise-Ikea.pem
 ProxyCommand ssh ikea-fs-bastion -W %h:%p
