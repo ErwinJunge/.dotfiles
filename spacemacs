@@ -86,7 +86,8 @@ This function should only modify configuration layer settings."
                                       solarized-theme
                                       real-auto-save
                                       yasnippet-snippets
-                                      blacken)
+                                      blacken
+                                      git-auto-commit-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
@@ -521,52 +522,17 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-;; Automatically add, commit, and push when files change.
-
-  ;; (defvar autocommit-dir-set '()
-  ;;   "Set of directories for which there is a pending timer job")
-
-  ;; (defun autocommit-perform-commit (dn)
-  ;;   (setq autocommit-dir-set (remove dn autocommit-dir-set))
-  ;;   (message (concat "Committing org files in " dn))
-  ;;   (shell-command (concat "cd " dn " && git commit -m 'Updated org files.'"))
-  ;;   (shell-command (concat "cd " dn " && git push & /usr/bin/true")))
-
-  ;; (defun autocommit-schedule-commit (dn)
-  ;;   "Schedule an autocommit (and push) if one is not already scheduled for the given dir."
-  ;;   (if (null (member dn autocommit-dir-set))
-  ;;       (progn
-  ;;         (run-with-idle-timer
-  ;;          10 nil
-  ;;          #'autocommit-perform-commit
-  ;;          dn)
-  ;;         (setq autocommit-dir-set (cons dn autocommit-dir-set)))))
-
-  ;; (defun autocommit-commit-all ()
-  ;;   (loop for dn in autocommit-dir-set do (autocommit-perform-commit dn)))
-
-  ;; (defun autocommit-after-save-hook ()
-  ;;   "After-save-hook to 'git add' the modified file and schedule a commit and push in the idle loop."
-  ;;   (let ((fn (buffer-file-name)))
-  ;;     (message "git adding %s" fn)
-  ;;     (shell-command (concat "git add " fn))
-  ;;     (autocommit-schedule-commit (file-name-directory fn))))
-
-  ;; (defun autocommit-setup-save-hook ()
-  ;;   "Set up the autocommit save hook for the current file."
-  ;;   (interactive)
-  ;;   (message "Set up autocommit save hook for this buffer.")
-  ;;   (add-hook 'after-save-hook 'autocommit-after-save-hook nil t))
-  ;; (require 'real-auto-save)
-  ;; (add-hook 'org-mode-hook 'real-auto-save-mode)
-  ;; (add-hook 'org-mode-hook 'autocommit-setup-save-hook)
-  ;; (setq real-auto-save-interval 60)
   (setq browse-url-browser-function 'browse-url-generic
         browse-url-generic-program "xdg-open")
   (require 'helm-bookmark)
-  ;; (add-hook 'org-clock-in-hook 'set-active-state-hook)
-  ;; (defun set-active-state-hook ()
-  ;;   (org-todo "ACTIVE"))
+  ;; org-mode
+  (setq gac-automatically-push-p t
+        gac-silent-message-p t)
+  (add-hook 'org-mode-hook 'git-auto-commit-mode)
+  (add-hook 'org-mode-hook 'real-auto-save-mode)
+  (defun set-active-state-hook ()
+    (org-todo "ACTIVE"))
+  (add-hook 'org-clock-in-hook 'set-active-state-hook)
   (with-eval-after-load 'org
     (setq org-todo-keywords '((sequence "TODO" "ACTIVE" "|" "DONE"))
           org-todo-keyword-faces '(("TODO" . org-todo)
@@ -579,6 +545,7 @@ you should place your code here."
                (when (file-exists-p file)
                  (push file org-agenda-files)))
             (org-projectile-todo-files)))
+  ;; end org-mode
   (setq alert-default-style 'libnotify)
   (add-hook 'python-mode-hook (lambda ()
                                 (hack-local-variables)
@@ -624,7 +591,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(flycheck-checker-error-threshold 4000)
  '(package-selected-packages
-   '(tern dockerfile-mode docker tablist docker-tramp yasnippet-snippets yapfify yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights visual-regexp-steroids visual-regexp vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tagedit systemd sql-indent spotify spaceline powerline solarized-theme smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restclient-helm restart-emacs real-auto-save rbenv rake rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-bullets open-junk-file ob-restclient ob-http ob-elixir nginx-mode neotree mwim move-text mmm-mode minitest markdown-toc magit-gitflow magit-popup macrostep lua-mode lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc insert-shebang indent-guide hy-mode dash-functional hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-spotify-plus multi helm-pydoc helm-projectile projectile helm-mode-manager helm-make helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-rust flycheck-pos-tip pos-tip flycheck-credo flycheck flx-ido flx fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit git-commit with-editor transient evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eredis emmet-mode elisp-slime-nav dumb-jump drupal-mode php-mode diminish define-word cython-mode csv-mode company-web web-completion-data company-statistics company-shell company-restclient restclient know-your-http-well company-anaconda column-enforce-mode coffee-mode clojure-snippets clj-refactor hydra inflections multiple-cursors paredit lv clean-aindent-mode cider-eval-sexp-fu eval-sexp-fu cider sesman spinner queue parseedn clojure-mode parseclj a chruby cargo markdown-mode rust-mode bundler inf-ruby blacken bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed anaconda-mode pythonic f alchemist s company dash elixir-mode pkg-info epl aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup)))
+   '(git-auto-commit-mode yasnippet-snippets yapfify yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights visual-regexp-steroids visual-regexp vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tagedit systemd sql-indent spotify spaceline powerline solarized-theme smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restclient-helm restart-emacs real-auto-save rbenv rake rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-bullets open-junk-file ob-restclient ob-http ob-elixir nginx-mode neotree mwim move-text mmm-mode minitest markdown-toc magit-gitflow magit-popup macrostep lua-mode lorem-ipsum livid-mode skewer-mode simple-httpd live-py-mode linum-relative link-hint json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc insert-shebang indent-guide hy-mode dash-functional hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-spotify-plus multi helm-pydoc helm-projectile projectile helm-mode-manager helm-make helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-rust flycheck-pos-tip pos-tip flycheck-credo flycheck flx-ido flx fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit git-commit with-editor transient evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eredis emmet-mode elisp-slime-nav dumb-jump drupal-mode php-mode diminish define-word cython-mode csv-mode company-web web-completion-data company-statistics company-shell company-restclient restclient know-your-http-well company-anaconda column-enforce-mode coffee-mode clojure-snippets clj-refactor hydra inflections multiple-cursors paredit lv clean-aindent-mode cider-eval-sexp-fu eval-sexp-fu cider sesman spinner queue parseedn clojure-mode parseclj a chruby cargo markdown-mode rust-mode bundler inf-ruby blacken bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed anaconda-mode pythonic f alchemist s company dash elixir-mode pkg-info epl aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
