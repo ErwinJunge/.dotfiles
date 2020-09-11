@@ -548,6 +548,7 @@ you should place your code here."
                (when (file-exists-p file)
                  (push file org-agenda-files)))
             (org-projectile-todo-files)))
+  (require 'org)
   ;; end org-mode
   (setq alert-default-style 'libnotify)
   (add-hook 'python-mode-hook (lambda ()
