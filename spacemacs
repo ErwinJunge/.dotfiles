@@ -534,11 +534,14 @@ you should place your code here."
     (org-todo "ACTIVE"))
   (add-hook 'org-clock-in-hook 'set-active-state-hook)
   (with-eval-after-load 'org
-    (setq org-todo-keywords '((sequence "TODO" "ACTIVE" "|" "DONE"))
+    (setq org-todo-keywords '((sequence "TODO(t)" "ACTIVE(a)" "|" "CANCELLED(c)" "DONE(d)"))
           org-todo-keyword-faces '(("TODO" . org-todo)
                                    ("ACTIVE" . "yellow")
-                                   ("DONE" . org-done))
-          spaceline-org-clock-p t))
+                                   ("DONE" . org-done)
+                                   ("CANCELLED" . org-archived))
+          spaceline-org-clock-p t
+          org-clock-persist t)
+    (org-clock-persistence-insinuate))
   (with-eval-after-load 'org-agenda
     (require 'org-projectile)
     (mapcar '(lambda (file)
