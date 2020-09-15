@@ -16,3 +16,9 @@
 	ui = auto
 [pull]
 	rebase = true
+[commit]
+	gpgSign = true
+[log]
+	showSignature = true
+[tag]
+	gpgSign = true
