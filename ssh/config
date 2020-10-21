@@ -336,18 +336,18 @@ IdentityFile ~/.ssh/tqw_master
 ServerAliveInterval 60
 
 Host tinqwise-shared-data
-HostName ec2-34-251-229-43.eu-west-1.compute.amazonaws.com
+HostName ec2-3-249-138-133.eu-west-1.compute.amazonaws.com
 User ec2-user
 IdentityFile ~/.ssh/Tinqwise-shared-keypair.pem
 ServerAliveInterval 60
 ProxyCommand ssh stamkracht -W %h:%p
 
-Host tinqwise-shared-ec21
-HostName ec2-63-32-3-112.eu-west-1.compute.amazonaws.com
+Host tinqwise-shared-ec2
+HostName ip-10-50-39-24.eu-west-1.compute.internal
 User ec2-user
 IdentityFile ~/.ssh/Tinqwise-shared-keypair.pem
 ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
+ProxyCommand ssh tinqwise-shared-data -W %h:%p
 
 Host vbne
 HostName leerjegroen.nl
@@ -380,7 +380,25 @@ IdentityFile ~/.ssh/tqw_master
 ServerAliveInterval 60
 
 Host hkm
-HostName ec2-34-240-226-240.eu-west-1.compute.amazonaws.com
+HostName ec2-54-171-244-202.eu-west-1.compute.amazonaws.com
+User docker
+IdentityFile ~/.ssh/hkm.id_rsa
+ServerAliveInterval 60
+
+Host hkm-1
+HostName ec2-52-212-109-59.eu-west-1.compute.amazonaws.com
+User docker
+IdentityFile ~/.ssh/hkm.id_rsa
+ServerAliveInterval 60
+
+Host hkm-2
+HostName ec2-54-194-159-31.eu-west-1.compute.amazonaws.com
+User docker
+IdentityFile ~/.ssh/hkm.id_rsa
+ServerAliveInterval 60
+
+Host hkm-3
+HostName ec2-52-50-74-169.eu-west-1.compute.amazonaws.com
 User docker
 IdentityFile ~/.ssh/hkm.id_rsa
 ServerAliveInterval 60
