@@ -43,6 +43,7 @@
     ~/.ssh/config: ssh/config
     ~/.config/pycodestyle: pycodestyle
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
+    ~/.config/psd/psd.conf: psd.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
