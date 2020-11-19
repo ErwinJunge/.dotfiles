@@ -44,6 +44,7 @@
     ~/.config/pycodestyle: pycodestyle
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     ~/.config/psd/psd.conf: psd.conf
+    ~/.config/dunst/dunstrc: dunstrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
