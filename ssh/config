@@ -403,6 +403,12 @@ User docker
 IdentityFile ~/.ssh/hkm.id_rsa
 ServerAliveInterval 60
 
+Host hkm-worker
+HostName ec2-54-194-44-154.eu-west-1.compute.amazonaws.com
+User docker
+IdentityFile ~/.ssh/hkm.id_rsa
+ServerAliveInterval 60
+
 Host k8s-hop
 HostName ec2-34-251-132-138.eu-west-1.compute.amazonaws.com
 User ubuntu
