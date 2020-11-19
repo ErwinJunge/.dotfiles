@@ -1,56 +1,14 @@
+IdentitiesOnly yes
+IdentityFile /tmp/sshpubkeys/erwin
+
 Host enbiun
 HostName enbiun.stamkracht.com
 User cc
 ServerAliveInterval 60
 
-Host bymeez
-HostName bymeez.com
-User bymeez
-ServerAliveInterval 60
-
-Host bymeez2
-HostName werkpaard.bymeez.com
-User bymeez
-ServerAliveInterval 60
-
-Host bymeez3
-HostName ploeg.bymeez.com
-User bymeez
-ServerAliveInterval 60
-
 Host dev
 HostName backup.stamkracht.com
 User cc
-ServerAliveInterval 60
-
-Host levens
-HostName levenslangengelukkig.nl
-User levens
-ServerAliveInterval 60
-
-Host media
-HostName media.platform.co.nl
-User cc
-ServerAliveInterval 60
-
-Host web6
-HostName 178.21.113.85
-User erwin
-ServerAliveInterval 60
-
-Host web7
-HostName web7.platform.co.nl
-User erwin
-ServerAliveInterval 60
-
-Host web8
-HostName web8.platform.co.nl
-User erwin
-ServerAliveInterval 60
-
-Host openict
-HostName erp.open-ict.nl
-User erwin
 ServerAliveInterval 60
 
 Host host3
@@ -61,14 +19,6 @@ ServerAliveInterval 60
 Host junge
 HostName junge.nl
 User erwin
-ServerAliveInterval 60
-
-Host junge2
-ProxyCommand ssh -q junge nc -q0 10.0.0.220 22
-
-Host aacb16
-HostName 141.105.127.40
-User cc
 ServerAliveInterval 60
 
 Host aacb4
@@ -85,30 +35,6 @@ Host beeboxdata
 HostName vps155.directvps.nl
 User cc
 ServerAliveInterval 60
-
-Host singapore4
-HostName 10.250.85.106
-User tinqwise
-ServerAliveInterval 60
-ProxyCommand ssh -q stamkracht nc -q0 %h 22
-
-Host singapore16
-HostName 10.250.85.105
-User tinqwise
-ServerAliveInterval 60
-ProxyCommand ssh -q stamkracht nc -q0 %h 22
-
-Host singaprod
-HostName 10.253.114.19
-User tinqwise
-ServerAliveInterval 60
-ProxyCommand ssh singapore4 -W %h:%p
-
-Host openwrt
-HostName 10.34.54.1
-User root
-ServerAliveInterval 60
-ProxyCommand ssh -q stamkracht nc -q0 %h 22
 
 Host scope
 HostName api.scopeinsight.com
@@ -129,26 +55,6 @@ ServerAliveInterval 60
 Host brandfighters
 HostName bf.stamkracht.com
 User cc
-ServerAliveInterval 60
-
-Host dasboard
-HostName api.dasboard.co
-User stamkracht
-ServerAliveInterval 60
-
-Host beeboxdata
-HostName vps155.directvps.nl
-User cc
-ServerAliveInterval 60
-
-Host new-staging
-HostName sk-test.com
-User cc
-ServerAliveInterval 60
-
-Host junge
-HostName junge.nl
-User erwin
 ServerAliveInterval 60
 
 Host ipa
@@ -179,11 +85,6 @@ HostName test.liberty.tinqwise.nl
 User aalberts
 ServerAliveInterval 60
 
-Host agriplace
-HostName transip-4.agriplace.com
-User emil
-ServerAliveInterval 60
-
 Host webfaction
 HostName emildv.webfactional.com
 User emildv
@@ -202,7 +103,7 @@ ServerAliveInterval 60
 Host liberty-acceptatie-root
 HostName 95.170.86.96
 User root
-IdentityFile ~/.ssh/tqw_master
+IdentityFile /tmp/sshpubkeys/tqw_master
 ServerAliveInterval 60
 
 Host liberty-acceptatie
@@ -218,99 +119,8 @@ ServerAliveInterval 60
 Host aalberts-prod-root
 HostName aalbertsacademy.com
 User root
-IdentityFile ~/.ssh/tqw_master
+IdentityFile /tmp/sshpubkeys/tqw_master
 ServerAliveInterval 60
-
-Host debuut-prod
-HostName leren.debuut.nl
-User erwin
-ServerAliveInterval 60
-
-Host tinqwise-shared
-HostName 34.251.229.43
-User erwin
-ServerAliveInterval 60
-
-Host tinqwise-01
-HostName 10.3.0.11
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise-bamboo
-HostName 10.3.0.14
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise-confluence
-HostName 10.3.0.156
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise-3cx
-HostName 10.3.0.124
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise-web01
-HostName 10.3.0.221
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise-ldap01
-HostName 10.3.0.220
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise-mgmt
-HostName 10.3.0.229
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise-mgmt-sftp
-HostName 10.3.0.229
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise-mysql
-HostName 10.3.0.228
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise-mysql2
-HostName 10.3.0.227
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise-data
-HostName 10.3.0.231
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
-
-Host tinqwise10218-data
-HostName 10.3.0.231
-User 10218
-ServerAliveInterval 60
-ProxyCommand ssh stamkracht -W %h:%p
 
 Host ooak
 HostName ooak.stamkracht.com
@@ -320,137 +130,82 @@ ServerAliveInterval 60
 Host cdnstorage
 HostName storage1.directvps.nl
 User stamkracht
-IdentityFile ~/.ssh/bigstorage
+IdentityFile /tmp/sshpubkeys/bigstorage
 ProxyCommand ssh knab5 -W %h:%p
 
 Host tinqwise.nl
 HostName tinqwise.nl
 User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-
-Host hkm-liu
-HostName 37.97.151.5
-User root
-IdentityFile ~/.ssh/tqw_master
+IdentityFile /tmp/sshpubkeys/tqw_master
 ServerAliveInterval 60
 
 Host tinqwise-shared-data
 HostName ec2-3-249-138-133.eu-west-1.compute.amazonaws.com
 User ec2-user
-IdentityFile ~/.ssh/Tinqwise-shared-keypair.pem
+IdentityFile /tmp/sshpubkeys/Tinqwise-shared-keypair.pem
 ServerAliveInterval 60
 ProxyCommand ssh stamkracht -W %h:%p
 
 Host tinqwise-shared-ec2
 HostName ip-10-50-39-24.eu-west-1.compute.internal
 User ec2-user
-IdentityFile ~/.ssh/Tinqwise-shared-keypair.pem
+IdentityFile /tmp/sshpubkeys/Tinqwise-shared-keypair.pem
 ServerAliveInterval 60
 ProxyCommand ssh tinqwise-shared-data -W %h:%p
-
-Host vbne
-HostName leerjegroen.nl
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-
-Host lvnl2
-HostName cms2.igotoolslvnl.nl
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-
-Host krachtvandata
-HostName krachtvandata.nl
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
 
 Host gitlabci
 HostName 95.216.45.42
 User root
-IdentityFile ~/.ssh/sk-hetzner.id_rsa
-ServerAliveInterval 60
-
-Host tinqwise-nl
-HostName 37.97.229.9
-User root
-IdentityFile ~/.ssh/tqw_master
-ServerAliveInterval 60
-
-Host hkm
-HostName ec2-54-171-244-202.eu-west-1.compute.amazonaws.com
-User docker
-IdentityFile ~/.ssh/hkm.id_rsa
+IdentityFile /tmp/sshpubkeys/sk-hetzner.id_rsa
 ServerAliveInterval 60
 
 Host hkm-1
 HostName ec2-52-212-109-59.eu-west-1.compute.amazonaws.com
 User docker
-IdentityFile ~/.ssh/hkm.id_rsa
+IdentityFile /tmp/sshpubkeys/hkm.id_rsa
 ServerAliveInterval 60
 
 Host hkm-2
 HostName ec2-54-194-159-31.eu-west-1.compute.amazonaws.com
 User docker
-IdentityFile ~/.ssh/hkm.id_rsa
+IdentityFile /tmp/sshpubkeys/hkm.id_rsa
 ServerAliveInterval 60
 
 Host hkm-3
 HostName ec2-52-50-74-169.eu-west-1.compute.amazonaws.com
 User docker
-IdentityFile ~/.ssh/hkm.id_rsa
+IdentityFile /tmp/sshpubkeys/hkm.id_rsa
 ServerAliveInterval 60
 
 Host hkm-worker
 HostName ec2-54-194-44-154.eu-west-1.compute.amazonaws.com
 User docker
-IdentityFile ~/.ssh/hkm.id_rsa
+IdentityFile /tmp/sshpubkeys/hkm.id_rsa
 ServerAliveInterval 60
 
 Host k8s-hop
 HostName ec2-34-251-132-138.eu-west-1.compute.amazonaws.com
 User ubuntu
 Port 22
-IdentityFile ~/.ssh/prod-docker-01.pem
+IdentityFile /tmp/sshpubkeys/prod-docker-01.pem
 ProxyCommand ssh stamkracht -W %h:%p
 
 Host pvh-hop
 HostName 34.251.231.204
 User ubuntu
 Port 22
-IdentityFile ~/.ssh/pvh.id_rsa
-
-Host pvh0
-HostName 10.30.32.146
-User ubuntu
-Port 22
-IdentityFile ~/.ssh/pvh.id_rsa
-ProxyCommand ssh pvh-hop -W %h:%p
-
-Host pvh1
-HostName 10.30.42.212
-User ubuntu
-Port 22
-IdentityFile ~/.ssh/pvh.id_rsa
-ProxyCommand ssh pvh-hop -W %h:%p
-
-Host qollapdb0
-HostName 10.0.0.22
-User root
-ProxyCommand ssh ipa -W %h:%p
+IdentityFile /tmp/sshpubkeys/pvh.id_rsa
 
 Host ikea-fs-bastion
 HostName ec2-18-184-157-115.eu-central-1.compute.amazonaws.com
 User ubuntu
-IdentityFile ~/.ssh/qollab-ikea.pem
+IdentityFile /tmp/sshpubkeys/qollab-ikea.pem
 ProxyCommand ssh stamkracht -W %h:%p
 
 Host ikea-fs
 HostName 10.100.33.151
 User ec2-user
-IdentityFile ~/.ssh/Tinqwise-Ikea.pem
+IdentityFile /tmp/sshpubkeys/Tinqwise-Ikea.pem
 ProxyCommand ssh ikea-fs-bastion -W %h:%p
 
 Host nagios
@@ -460,10 +215,10 @@ User root
 Host gstar-sftp
 HostName rawftp.g-star.com
 User Qollab
-IdentityFile ~/.ssh/gstar
+IdentityFile /tmp/sshpubkeys/gstar
 KexAlgorithms diffie-hellman-group1-sha1,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1
 Ciphers aes256-cbc
 
 Host qollabsftp
 HostName sftp.qollab.io
-IdentityFile ~/.ssh/qollabsftp
+IdentityFile /tmp/sshpubkeys/qollabsftp
