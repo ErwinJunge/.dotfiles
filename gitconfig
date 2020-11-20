@@ -22,3 +22,5 @@
 	showSignature = true
 [tag]
 	gpgSign = true
+[gitlab "gitlab.internal.qollap.com/api/v4"]
+	user = erwin
