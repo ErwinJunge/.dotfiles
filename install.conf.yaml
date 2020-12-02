@@ -35,6 +35,7 @@
     ~/.config/fish/functions/vmk2post.fish: fish/functions/vmk2post.fish
     ~/.config/fish/functions/vup.fish: fish/functions/vup.fish
     ~/.config/fish/functions/ssh.fish: fish/functions/ssh.fish
+    ~/.config/fish/conf.d/virtualfish-loader.fish: fish/conf.d/virtualfish-loader.fish
     ~/.config/fish/config.fish: fish/config.fish
     ~/.config/fish/fishfile: fish/fishfile
     ~/.offlineimaprc: offlineimaprc
