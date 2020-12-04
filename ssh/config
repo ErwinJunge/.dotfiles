@@ -203,7 +203,19 @@ IdentityFile /tmp/sshpubkeys/qollab-ikea.pem
 ProxyCommand ssh stamkracht -W %h:%p
 
 Host ikea-fs
-HostName 10.100.33.151
+HostName 10.100.33.253
+User ec2-user
+IdentityFile /tmp/sshpubkeys/Tinqwise-Ikea.pem
+ProxyCommand ssh ikea-fs-bastion -W %h:%p
+
+Host ikea-fs2
+HostName 10.100.40.184
+User ec2-user
+IdentityFile /tmp/sshpubkeys/Tinqwise-Ikea.pem
+ProxyCommand ssh ikea-fs-bastion -W %h:%p
+
+Host ikea-py36
+HostName 10.100.41.208
 User ec2-user
 IdentityFile /tmp/sshpubkeys/Tinqwise-Ikea.pem
 ProxyCommand ssh ikea-fs-bastion -W %h:%p
