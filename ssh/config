@@ -234,3 +234,7 @@ Ciphers aes256-cbc
 Host qollabsftp
 HostName sftp.qollab.io
 IdentityFile /tmp/sshpubkeys/qollabsftp
+
+Host qollab_websites
+HostName 198.211.120.237
+User root
