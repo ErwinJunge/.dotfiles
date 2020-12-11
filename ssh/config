@@ -215,7 +215,7 @@ IdentityFile /tmp/sshpubkeys/Tinqwise-Ikea.pem
 ProxyCommand ssh ikea-fs-bastion -W %h:%p
 
 Host ikea-py36
-HostName 10.100.41.208
+HostName 10.100.34.154
 User ec2-user
 IdentityFile /tmp/sshpubkeys/Tinqwise-Ikea.pem
 ProxyCommand ssh ikea-fs-bastion -W %h:%p
