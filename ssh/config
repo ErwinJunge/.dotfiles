@@ -238,3 +238,7 @@ IdentityFile /tmp/sshpubkeys/qollabsftp
 Host qollab_websites
 HostName 198.211.120.237
 User root
+
+Host topics
+Hostname 178.21.116.184
+User cc
