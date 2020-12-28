@@ -56,7 +56,12 @@ This function should only modify configuration layer settings."
      better-defaults
      helm
      emacs-lisp
-     (python :variables python-test-runner 'pytest python-backend 'anaconda)
+     (python :variables
+             python-test-runner 'pytest
+             python-backend 'lsp
+             python-formatter 'lsp
+             python-format-on-save t
+             python-sort-imports-on-save t)
      multiple-cursors
      neotree
      git
@@ -79,15 +84,11 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '((pytest :location (recipe
-                                                         :fetcher github
-                                                         :repo "ErwinJunge/pytest-el"))
-                                      visual-regexp-steroids
+   dotspacemacs-additional-packages '(visual-regexp-steroids
                                       eredis
                                       solarized-theme
                                       real-auto-save
                                       yasnippet-snippets
-                                      blacken
                                       git-auto-commit-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -552,11 +553,6 @@ you should place your code here."
   (require 'org)
   ;; end org-mode
   (setq alert-default-style 'libnotify)
-  (add-hook 'python-mode-hook (lambda ()
-                                (hack-local-variables)
-                                (when (boundp 'use-blacken)
-                                  (blacken-mode))))
-  (remove-hook 'python-mode-hook 'importmagic-mode)
   (setq-default pytest-cmd-flags "-s --lf")
   (setq web-mode-engines-alist '(("django"    . "\\.html\\'")))
   (setq web-mode-markup-indent-offset 2)
